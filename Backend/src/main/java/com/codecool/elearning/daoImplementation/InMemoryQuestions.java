@@ -27,19 +27,30 @@ public class InMemoryQuestions {
     }
 
 
-    public void addQuestion() {
+    public void addQuestion(Question question) {
+        inMemoryQuestions.add(question);
 
     }
 
     public Question getRandomInMemoryQuestion() {
-            Random random = new Random();
-            int newQuestionNumber = random.nextInt(inMemoryQuestions.size());
+        Random random = new Random();
+        int newQuestionNumber = random.nextInt(inMemoryQuestions.size());
 
-            while (newQuestionNumber == lastQuestionNumber) {
-                newQuestionNumber = random.nextInt(inMemoryQuestions.size());
-            }
-            lastQuestionNumber = newQuestionNumber;
+        while (newQuestionNumber == lastQuestionNumber) {
+            newQuestionNumber = random.nextInt(inMemoryQuestions.size());
+        }
+        lastQuestionNumber = newQuestionNumber;
 
         return inMemoryQuestions.get(newQuestionNumber);
+    }
+
+    public Question getQuestionByName(String name) {
+
+        for (Question question : inMemoryQuestions) {
+            if (question.getQuestion().equals(name)) {
+                return question;
+            }
+        }
+        return null;
     }
 }

@@ -1,7 +1,10 @@
 package com.codecool.elearning.model;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class Question {
 
@@ -11,8 +14,11 @@ public class Question {
         return question;
     }
 
-   Map<String, Boolean> answers = new HashMap<>();
+    private Map<String, Boolean> answers = new HashMap<>();
 
+    public Map<String, Boolean> getAnswers() {
+        return answers;
+    }
 
     public Question(String question, String a1, String a2, String a3, String a4) {
         this.question = question;

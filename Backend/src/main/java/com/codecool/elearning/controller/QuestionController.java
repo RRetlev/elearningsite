@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-
+import java.util.List;
 
 @RestController
 public class QuestionController {
@@ -17,9 +16,15 @@ public class QuestionController {
     private InMemoryQuestions inMemoryQuestions;
 
     @GetMapping("/question")
-    public ArrayList<Question> getRandomQuestion() {
-        return inMemoryQuestions.getInMemoryQuestions();
+    public Question getRandomQuestion() {
+        return inMemoryQuestions.getRandomInMemoryQuestion();
     }
 
+    @PostMapping("/question")
+    @ResponseBody
+    public boolean checkAnswer(@RequestParam boolean check) {
+        return false;
+    }
 
 }
+

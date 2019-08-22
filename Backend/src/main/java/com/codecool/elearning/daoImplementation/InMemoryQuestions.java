@@ -24,22 +24,33 @@ public class InMemoryQuestions {
         addQuestions();
     }
 
+    public List<Question> getInMemoryQuestions() {
+        return inMemoryQuestions;
+    }
+
     public void addQuestions() {
-        this.inMemoryQuestions.add(new Question("What is my favourite color?",
-                "Blue",
-                "Green",
-                "Yellow",
-                "Red"));
-        this.inMemoryQuestions.add(new Question("What is your quest?",
-                "I seek the Holy Grail!",
-                "To wash an elephant's feet!",
-                "I wish to catch a cold with a butterfly-net!",
-                "World peace"));
-        this.inMemoryQuestions.add(new Question("What is the air-speed velocity of an unladen swallow?",
-                "What do you mean? An African or European swallow?",
-                "42 km/h",
-                "42 mph",
-                "42 m/s"));
+        Question q1 = new Question("What is my favourite color?");
+        Question q2 = new Question("What is your quest?");
+        Question q3 = new Question("What is the air-speed velocity of an unladen swallow?");
+
+        q1.generateAnswer(true,"blue");
+        q1.generateAnswer(false,"yellow");
+        q1.generateAnswer(false,"green");
+        q1.generateAnswer(false,"red");
+
+        q2.generateAnswer(true,"I seek the Holy Grail!");
+        q2.generateAnswer(false,"To wash an elephant's feet.");
+        q2.generateAnswer(false,"I wish to catch a cold with a butterfly-net");
+        q2.generateAnswer(false,"World peace.");
+
+        q3.generateAnswer(true,"What do you mean? An african or european swallow?");
+        q3.generateAnswer(false,"42 km/h");
+        q3.generateAnswer(false,"42 mph");
+        q3.generateAnswer(false,"42 m/s");
+
+        this.inMemoryQuestions.add(q1);
+        this.inMemoryQuestions.add(q2);
+        this.inMemoryQuestions.add(q3);
     }
 
 

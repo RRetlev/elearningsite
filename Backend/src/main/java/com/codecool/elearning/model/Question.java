@@ -8,7 +8,16 @@ import java.util.*;
 public class Question {
 
     private String question;
+
     private List<Answer> answers = new ArrayList<>();
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
+    }
 
     public String getQuestion() {
         return question;
@@ -18,14 +27,17 @@ public class Question {
         return answers;
     }
 
-    public Question(String question, String... answerTexts) {
-        boolean firstTrue = true;
-        this.question = question;
-        for (String answer : answerTexts) {
-            this.answers.add(new Answer(firstTrue, answer));
-            firstTrue = false;
-        }
+    public Question() {
     }
+
+    public Question(String question) {
+        this.question = question;
+    }
+
+    public void generateAnswer(boolean valid, String answerText) {
+            this.answers.add(new Answer(valid, answerText));
+        }
+
 
     public void shuffleAnswers() {
         Collections.shuffle(answers);

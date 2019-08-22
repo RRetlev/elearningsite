@@ -62,7 +62,7 @@ class App extends Component {
             </div> : null}
           </div>
           <div>
-            {this.state.isAnswerGiven && !this.state.isAnswerRight ? <div><h1>You are dumb as fuck</h1>
+            {this.state.isAnswerGiven && !this.state.isAnswerRight ? <div><h1>You stupid</h1>
               <button onClick={this.refreshPage} className="btn btn-info">
                 NEXT
           </button>

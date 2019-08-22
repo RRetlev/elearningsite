@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Container from './components/container';
+import NewQuestion from './components/pages/newquestion';
 
 class App extends Component {
   state = {
@@ -19,16 +21,23 @@ class App extends Component {
   }
 
 
-
   render() {
-    return (
-      <div className="App">
-        <Container
-         question={this.state.question}
-         answers={this.state.answers}/>
-      </div>
-    );
-  }
+    return(
+        <Router>
+            <div className="App">
+                <div className="container">
+                    <Route exact path="/" render={props =>(
+                        <React.Fragment>
+                          <Container question={this.state.question} answers={this.state.answers}/>
+                        </React.Fragment>
+                    )} />
+                    <Route path="/new-question" component={()=> <NewQuestion/>}/>
+                </div>
+            </div>
+        </Router>
+    )
 }
+}
+
 
 export default App;

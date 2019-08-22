@@ -47,7 +47,7 @@ public class QuestionTest {
     }
 
     @Test
-    public void contexLoads() {
+    public void contextLoads() {
         assertThat(controller).isNotNull();
     }
 

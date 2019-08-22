@@ -2,10 +2,7 @@ package com.codecool.elearning.model;
 
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class Question {
@@ -30,4 +27,7 @@ public class Question {
         }
     }
 
+    public void shuffleAnswers() {
+        Collections.shuffle(answers);
+    }
 }

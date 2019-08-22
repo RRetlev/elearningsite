@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Container from './components/container';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
 
@@ -27,7 +27,7 @@ class App extends Component {
     this.setState({ isAnswerGiven: true })
   }
 
-  refreshPage =()=> {
+  refreshPage = () => {
     window.location.reload();
   }
 
@@ -47,30 +47,30 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
 
-      <div className="App">
-        <Container
-          question={this.state.question}
-          answers={this.state.answers}
-          ongoodAnswer={this.handlegoodAnswer}
-          onbadAnswer={this.handleBadAnswer}
-        />
-        <div>
-          {this.state.isAnswerGiven && this.state.isAnswerRight ? <div><h1>Congrats your answer is correct</h1>
-            <button onClick={this.refreshPage} className="btn btn-info">
-            NEXT
+        <div className="App">
+          <Route exact path="/" render={props => (
+            <Container question={this.state.question} answers={this.state.answers} ongoodAnswer={this.handlegoodAnswer} onbadAnswer={this.handleBadAnswer} />
+          )}
+          />
+          <div>
+            {this.state.isAnswerGiven && this.state.isAnswerRight ? <div><h1>Congrats your answer is correct</h1>
+              <button onClick={this.refreshPage} className="btn btn-info">
+                NEXT
           </button>
-          </div> : null}
-        </div>
-        <div>
-          {this.state.isAnswerGiven && !this.state.isAnswerRight ?  <div><h1>You are dumb as fuck</h1>
-            <button onClick={this.refreshPage} className="btn btn-info">
-            NEXT
+            </div> : null}
+          </div>
+          <div>
+            {this.state.isAnswerGiven && !this.state.isAnswerRight ? <div><h1>You are dumb as fuck</h1>
+              <button onClick={this.refreshPage} className="btn btn-info">
+                NEXT
           </button>
-          </div> : null}
+            </div> : null}
+          </div>
         </div>
-      </div>
 
+      </Router>
     );
   }
 }

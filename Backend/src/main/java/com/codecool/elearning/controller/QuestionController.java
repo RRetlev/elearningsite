@@ -26,12 +26,9 @@ public class QuestionController {
 
     @PostMapping("/new-question")
     @ResponseBody
-    public Question addNewQuestion(@RequestParam String question, String validAnswer, String invalid1, String invalid2, String invalid3) {
-        inMemoryQuestions.addQuestion(new Question(question, validAnswer, invalid1, invalid2, invalid3));
-        if (inMemoryQuestions.getQuestionByName(question) != null) {
-            return inMemoryQuestions.getQuestionByName(question);
-        }
-        return null;
+    public Question addNewQuestion(@RequestBody Question question) {
+        inMemoryQuestions.addQuestion(question);
+        return question;
     }
 }
 

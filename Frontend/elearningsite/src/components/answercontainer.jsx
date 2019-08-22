@@ -6,7 +6,11 @@ class AnswerContainer extends Component {
     render() { 
         return ( <div className="conatiner-fluid">
         {this.props.answers.map(answer =>
-        <Answer answer = {answer} />)}
+        <Answer 
+        answer = {answer} 
+        ongoodAnswer={this.props.ongoodAnswer}
+        onbadAnswer={this.props.onbadAnswer}
+        />)}
 
         </div> );
     }

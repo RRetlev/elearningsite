@@ -7,22 +7,14 @@ import AnswerContainer from './answercontainer'
 
 
 class Container extends Component {
-    state = {
-        answergiven: false,
-    }
-
-    giveAnswer = () =>{
-        this.setState({
-            answergiven : true
-        })
-    }
-
-
     render() {
         return (<div className="container">
-            <img src={require(`../images/milionaire.png`)} className="App-logo" />
+            <img src={require(`../images/milionaire.png`)} className="App-logo" alt="its very bjutifull" />
             <Question question={this.props.question} />
-            <AnswerContainer answers={this.props.answers} />
+            <AnswerContainer 
+            answers={this.props.answers} 
+            ongoodAnswer={this.props.ongoodAnswer}
+            onbadAnswer={this.props.onbadAnswer} />
         </div>);
     }
 }

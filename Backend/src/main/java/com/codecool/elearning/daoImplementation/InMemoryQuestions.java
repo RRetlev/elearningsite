@@ -1,6 +1,7 @@
 package com.codecool.elearning.daoImplementation;
 
 import com.codecool.elearning.model.Question;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,6 +11,9 @@ import java.util.Random;
 
 @Component
 public class InMemoryQuestions {
+
+    @Autowired
+    private Random random;
 
     private int lastQuestionNumber;
 
@@ -45,7 +49,7 @@ public class InMemoryQuestions {
     }
 
     public Question getRandomInMemoryQuestion() {
-        Random random = new Random();
+
         int newQuestionNumber = random.nextInt(inMemoryQuestions.size());
 
         while (newQuestionNumber == lastQuestionNumber) {

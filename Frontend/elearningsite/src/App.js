@@ -6,7 +6,7 @@ import Container from './components/container';
 class App extends Component {
   state = {
     question: null,
-    answers: {}
+    answers: []
   }
   componentDidMount(){
     console.log("DiD Mount")

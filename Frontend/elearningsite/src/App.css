@@ -35,3 +35,14 @@
 .buttonmargin{
   margin: 3px;
 }
+
+.red{
+  background-color: red !important;
+  border-color: red !important;
+}
+
+
+.green{
+  background-color: green !important;
+  border-color: green !important;
+}

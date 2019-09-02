@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Container from './components/container';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-
-
-
-
-
+import AddQuestion from './components/pages/newquestion';
 
 class App extends Component {
   state = {
@@ -52,8 +47,9 @@ class App extends Component {
         <div className="App">
           <Route exact path="/" render={props => (
             <Container question={this.state.question} answers={this.state.answers} ongoodAnswer={this.handlegoodAnswer} onbadAnswer={this.handleBadAnswer} />
-          )}
+            )}
           />
+            <Route path="/new-question" component={()=> <AddQuestion/>}/>
           <div>
             {this.state.isAnswerGiven && this.state.isAnswerRight ? <div><h1>Congrats your answer is correct</h1>
               <button onClick={this.refreshPage} className="btn btn-info">
@@ -69,6 +65,8 @@ class App extends Component {
             </div> : null}
           </div>
         </div>
+}
+}
 
       </Router>
     );

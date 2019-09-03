@@ -26,12 +26,6 @@ class App extends Component {
             )
     }
 
-    NoMatch = ({location}) => (
-        <div>
-            <h3>No match for <code>{location.pathname}</code></h3>
-        </div>
-    );
-
 
     render() {
         return (

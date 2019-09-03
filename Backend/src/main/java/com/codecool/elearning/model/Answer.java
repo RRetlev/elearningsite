@@ -1,20 +1,28 @@
 package com.codecool.elearning.model;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
 public class Answer {
 
+    @Id
+    @GeneratedValue
+    private long id;
+
     private String text;
-    private boolean right;
+    private boolean rightAnswer;
 
-    public Answer(boolean right, String text) {
-        this.right = right;
-        this.text = text;
-    }
 
-    public boolean isRight() {
-        return right;
-    }
-
-    public String getText() {
-        return text;
-    }
 }

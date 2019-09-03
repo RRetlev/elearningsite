@@ -2,12 +2,12 @@ package com.codecool.elearning.controller;
 
 
 import com.codecool.elearning.daoImplementation.InMemoryQuestions;
+import com.codecool.elearning.daoImplementation.QuestionDBService;
 import com.codecool.elearning.model.Question;
+import com.codecool.elearning.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Stack;
 
 @CrossOrigin
 @RestController
@@ -15,9 +15,12 @@ public class QuestionController {
     @Autowired
     private InMemoryQuestions inMemoryQuestions;
 
+    @Autowired
+    private QuestionDBService questionDBService;
+
     @GetMapping("/question")
     public Question getRandomQuestion() {
-        return inMemoryQuestions.getRandomInMemoryQuestion();
+        return questionDBService.getrandomQuestion();
     }
 
     @PostMapping("/question")

@@ -29,28 +29,21 @@ public class InMemoryQuestions {
     }
 
     public void addQuestions() {
-        Question q1 = new Question("What is my favourite color?");
-        Question q2 = new Question("What is your quest?");
-        Question q3 = new Question("What is the air-speed velocity of an unladen swallow?");
 
-        q1.generateAnswer(true,"Blue");
-        q1.generateAnswer(false,"Yellow");
-        q1.generateAnswer(false,"Green");
-        q1.generateAnswer(false,"Red");
+        //q1.generateAnswer(true,"Blue");
+        //q1.generateAnswer(false,"Yellow");
+        //q1.generateAnswer(false,"Green");
+        //q1.generateAnswer(false,"Red");
 
-        q2.generateAnswer(true,"I seek the Holy Grail!");
-        q2.generateAnswer(false,"To wash an elephant's feet!.");
-        q2.generateAnswer(false,"I wish to catch a cold with a butterfly-net!");
-        q2.generateAnswer(false,"World peace!");
+        //q2.generateAnswer(true,"I seek the Holy Grail!");
+        //q2.generateAnswer(false,"To wash an elephant's feet!.");
+        //q2.generateAnswer(false,"I wish to catch a cold with a butterfly-net!");
+        //q2.generateAnswer(false,"World peace!");
 
-        q3.generateAnswer(true,"What do you mean? An african or european swallow?");
-        q3.generateAnswer(false,"42 km/h");
-        q3.generateAnswer(false,"42 mph");
-        q3.generateAnswer(false,"42 m/s");
-
-        this.inMemoryQuestions.add(q1);
-        this.inMemoryQuestions.add(q2);
-        this.inMemoryQuestions.add(q3);
+        //q3.generateAnswer(true,"What do you mean? An african or european swallow?");
+        //q3.generateAnswer(false,"42 km/h");
+        //q3.generateAnswer(false,"42 mph");
+        //q3.gener
     }
 
 
@@ -68,7 +61,7 @@ public class InMemoryQuestions {
         }
         lastQuestionNumber = newQuestionNumber;
         Question returnQuestion = inMemoryQuestions.get(newQuestionNumber);
-        returnQuestion.shuffleAnswers();
+       // returnQuestion.shuffleAnswers();
 
         return returnQuestion;
     }

@@ -77,7 +77,7 @@ public class QuestionTest {
          */
 
 
-        Question question = new Question("");
+        Question question = new Question();
         HttpEntity<Question> request = new HttpEntity<>(question, headers);
         restTemplate.postForObject(addQuestionUrl, request, String.class);
 

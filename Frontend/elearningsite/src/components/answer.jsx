@@ -4,10 +4,10 @@ class Answer extends Component {
     state = {
         localClassname: ['btn', 'btn-primary', 'col', 'buttonmargin']
 
-    }
+    };
 
     handleClick = () => {
-        console.log("click")
+        console.log("click");
 
         if (this.props.answer.right) {
             {
@@ -31,7 +31,7 @@ class Answer extends Component {
             });
 
         }
-    }
+    };
 
     render() {
         return (<div>

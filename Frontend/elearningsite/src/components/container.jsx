@@ -3,7 +3,6 @@ import Question from './question';
 import Answer from './answer';
 import AnswerContainer from './answercontainer'
 
-
 class Container extends Component {
     render() {
         return (<div className="container">
@@ -11,8 +10,9 @@ class Container extends Component {
             <Question question={this.props.question}/>
             <AnswerContainer
                 answers={this.props.answers}
-                ongoodAnswer={this.props.ongoodAnswer}
-                onbadAnswer={this.props.onbadAnswer}/>
+                // ongoodAnswer={this.props.ongoodAnswer}
+                // onbadAnswer={this.props.onbadAnswer}
+            />
         </div>);
     }
 }

@@ -4,32 +4,18 @@ import './App.css';
 import Container from './components/container';
 import AddQuestion from './components/pages/newquestion';
 import Header from "./components/layout/Header";
+import PageNotFound from "./components/pages/PageNotFound";
 
 
 class App extends Component {
     state = {
         question: null,
         answers: [],
-        isAnswerGiven: false,
-        isAnswerRight: false
-    }
+    };
 
-    handlegoodAnswer = () => {
-        console.log("good answer")
-        this.setState({isAnswerGiven: true, isAnswerRight: true})
-    }
-
-    handleBadAnswer = () => {
-        console.log("bad answer")
-        this.setState({isAnswerGiven: true})
-    }
-
-    refreshPage = () => {
-        window.location.reload();
-    }
 
     componentDidMount() {
-        console.log("DiD Mount")
+        console.log("DiD Mount");
         fetch('http://localhost:8080/question')
             .then(response => response.json())
             .then(data =>
@@ -40,43 +26,37 @@ class App extends Component {
             )
     }
 
+    NoMatch = ({location}) => (
+        <div>
+            <h3>No match for <code>{location.pathname}</code></h3>
+        </div>
+    );
+
 
     render() {
         return (
             <Router>
-
                 <div className="App">
                     <Header/>
-                    {/*<Switch>*/}
-                    <Route exact path="/" render={props => (
-                        <Container question={this.state.question}
-                                   answers={this.state.answers}
-                                   ongoodAnswer={this.handlegoodAnswer}
-                                   onbadAnswer={this.handleBadAnswer}/>
-                    )}
-                    />
-                    <Route path="/new-question" component={() => <AddQuestion/>}/>
-                    <div>
-                        {this.state.isAnswerGiven && this.state.isAnswerRight ?
-                            <div><h1>Congrats your answer is correct</h1>
-                                <button onClick={this.refreshPage} className="btn btn-info">
-                                    NEXT
-                                </button>
-                            </div> : null}
-                    </div>
-                    <div>
-                        {this.state.isAnswerGiven && !this.state.isAnswerRight ? <div><h1>You stupid</h1>
-                            <button onClick={this.refreshPage} className="btn btn-info">
-                                NEXT
-                            </button>
-                        </div> : null}
-                    </div>
-                    {/*</Switch>*/}
+                    <Switch>
+                        <Route path="/new-question" component={() => <AddQuestion/>}/>
+                        <Route exact path="/" render={props => (
+                            <Container question={this.state.question}
+                                       answers={this.state.answers}
+                                // ongoodAnswer={this.handlegoodAnswer}
+                                // onbadAnswer={this.handleBadAnswer}
+                            />)}
+                        />
+
+
+                    </Switch>
                 </div>
 
             </Router>
         );
     }
+
+
 }
 
 export default App;

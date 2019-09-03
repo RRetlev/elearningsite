@@ -95,6 +95,8 @@ export class AddQuestion extends Component{
                 style={{flex:1}}
             />
         </form>
+
+
         )
     }
 }

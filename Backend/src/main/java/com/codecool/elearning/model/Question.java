@@ -5,6 +5,10 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 
+
+
+
+
 public class Question {
 
     private String question;

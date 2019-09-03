@@ -46,7 +46,7 @@ class App extends Component {
                                        answers={this.state.answers}
                             />)}
                         />
-
+                        <Route component={PageNotFound}/>
                     </Switch>
                 </div>
 

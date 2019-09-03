@@ -1,24 +1,28 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+
 class Answer extends Component {
     state = {
         localClassname: ['btn', 'btn-primary', 'col', 'buttonmargin']
 
-    }
+    };
 
     handleClick = () => {
-        console.log("click")
+        console.log("click");
 
         if (this.props.answer.right) {
-            {this.props.ongoodAnswer()}
+            {
+                this.props.onGoodAnswer()
+            }
             this.setState(state => {
                 const localClassname = [...state.localClassname, "green"];
                 return {
                     localClassname
                 };
             });
-        }
-        else {
-            {this.props.onbadAnswer()}
+        } else {
+            {
+                this.props.onBadAnswer()
+            }
             this.setState(state => {
                 const localClassname = [...state.localClassname, "red"];
                 return {
@@ -27,14 +31,15 @@ class Answer extends Component {
             });
 
         }
-    }
+    };
+
     render() {
         return (<div>
             <button type="button" className={this.state.localClassname.join(' ')} onClick={this.handleClick}>
-                        {this.props.answer.text}
-                    </button>
-                
-            
+                {this.props.answer.text}
+            </button>
+
+
         </div>);
     }
 }

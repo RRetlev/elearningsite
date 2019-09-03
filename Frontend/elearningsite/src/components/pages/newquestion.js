@@ -8,7 +8,7 @@ export class AddQuestion extends Component{
         false1:' ',
         false2:' ',
         false3:' ',
-    }
+    };
 
     onSubmit=(e) =>{
         const result={
@@ -39,9 +39,9 @@ export class AddQuestion extends Component{
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(result)
-        })
+        });
         this.setState({question:' ', trueanswer:' ',false1:' ',false2:' ',false3:' ',})
-    }
+    };
 
     onChange =(e) => this.setState({[e.target.name]:e.target.value});
 
@@ -95,6 +95,8 @@ export class AddQuestion extends Component{
                 style={{flex:1}}
             />
         </form>
+
+
         )
     }
 }

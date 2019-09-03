@@ -11,7 +11,7 @@ class Answer extends Component {
 
         if (this.props.answer.right) {
             {
-                this.props.ongoodAnswer()
+                this.props.onGoodAnswer()
             }
             this.setState(state => {
                 const localClassname = [...state.localClassname, "green"];
@@ -21,7 +21,7 @@ class Answer extends Component {
             });
         } else {
             {
-                this.props.onbadAnswer()
+                this.props.onBadAnswer()
             }
             this.setState(state => {
                 const localClassname = [...state.localClassname, "red"];

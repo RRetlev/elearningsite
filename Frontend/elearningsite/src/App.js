@@ -39,15 +39,13 @@ class App extends Component {
                 <div className="App">
                     <Header/>
                     <Switch>
+
                         <Route path="/new-question" component={() => <AddQuestion/>}/>
                         <Route exact path="/" render={props => (
                             <Container question={this.state.question}
                                        answers={this.state.answers}
-                                // ongoodAnswer={this.handlegoodAnswer}
-                                // onbadAnswer={this.handleBadAnswer}
                             />)}
                         />
-
 
                     </Switch>
                 </div>

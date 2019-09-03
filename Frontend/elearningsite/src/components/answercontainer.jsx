@@ -7,7 +7,7 @@ class AnswerContainer extends Component {
         isAnswerRight: false,
     };
 
-    handlegoodAnswer = () => {
+    handleGoodAnswer = () => {
         console.log("good answer");
         this.setState({isAnswerGiven: true, isAnswerRight: true})
     };
@@ -27,8 +27,8 @@ class AnswerContainer extends Component {
                 this.props.answers.map(answer =>
                     <Answer
                         answer={answer}
-                        ongoodAnswer={this.handlegoodAnswer}
-                        onbadAnswer={this.handleBadAnswer}
+                        onGoodAnswer={this.handleGoodAnswer}
+                        onBadAnswer={this.handleBadAnswer}
                     />)}
             <div>
                 {this.state.isAnswerGiven && this.state.isAnswerRight ?

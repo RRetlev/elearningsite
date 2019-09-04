@@ -1,6 +1,6 @@
 spring.datasource.url=jdbc:postgresql://localhost:5432/elearning
-spring.datasource.username=levi
-spring.datasource.password=almaalma
+spring.datasource.username=USERNAME
+spring.datasource.password=PASSWORD
 
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
 

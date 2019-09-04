@@ -1,13 +1,11 @@
 package com.codecool.elearning.daoImplementation;
 
-import com.codecool.elearning.model.Question;
+import com.codecool.elearning.model.gameEntity.Question;
 import com.codecool.elearning.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
-
-import java.util.Random;
 
 
 @Component

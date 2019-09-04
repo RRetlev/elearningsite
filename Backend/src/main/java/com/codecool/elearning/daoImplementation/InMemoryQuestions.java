@@ -1,6 +1,6 @@
 package com.codecool.elearning.daoImplementation;
 
-import com.codecool.elearning.model.Question;
+import com.codecool.elearning.model.gameEntity.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

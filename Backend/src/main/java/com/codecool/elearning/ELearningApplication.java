@@ -1,9 +1,10 @@
 package com.codecool.elearning;
 
-import com.codecool.elearning.daoImplementation.InMemoryQuestions;
-import com.codecool.elearning.model.Answer;
-import com.codecool.elearning.model.Question;
+import com.codecool.elearning.model.gameEntity.Answer;
+import com.codecool.elearning.model.gameEntity.Question;
+import com.codecool.elearning.model.userEntity.User;
 import com.codecool.elearning.repository.QuestionRepository;
+import com.codecool.elearning.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,6 +19,9 @@ public class ELearningApplication {
     @Autowired
     QuestionRepository questionRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(ELearningApplication.class, args);
     }
@@ -26,6 +30,7 @@ public class ELearningApplication {
     @Bean
     public CommandLineRunner init(){
         return args -> {
+
             Question question = Question.builder()
                     .question("Whats my favourite Color")
                     .build();
@@ -51,6 +56,13 @@ public class ELearningApplication {
                     .question(question)
                     .build();
 
+
+            User user = User.builder()
+                    .userName("Béla")
+                    .score(0)
+                    .build();
+
+            userRepository.save(user);
 
             question.setAnswers(Arrays.asList(answer1,answer2,answer3,answer4));
             questionRepository.save(question);

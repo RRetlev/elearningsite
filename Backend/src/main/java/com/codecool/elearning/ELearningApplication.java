@@ -1,8 +1,7 @@
 package com.codecool.elearning;
 
-import com.codecool.elearning.daoImplementation.InMemoryQuestions;
-import com.codecool.elearning.model.Answer;
-import com.codecool.elearning.model.Question;
+import com.codecool.elearning.model.gameEntity.Answer;
+import com.codecool.elearning.model.gameEntity.Question;
 import com.codecool.elearning.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

@@ -1,7 +1,6 @@
-package com.codecool.elearning.model;
+package com.codecool.elearning.model.gameEntity;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.*;

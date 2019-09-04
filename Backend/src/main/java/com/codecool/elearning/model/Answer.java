@@ -1,14 +1,14 @@
 package com.codecool.elearning.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
@@ -19,10 +19,15 @@ public class Answer {
 
     @Id
     @GeneratedValue
+    @JsonIgnore
     private long id;
+
 
     private String text;
     private boolean rightAnswer;
 
+    @ManyToOne
+    @JsonIgnore
+    private Question question;
 
 }

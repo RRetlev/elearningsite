@@ -25,13 +25,13 @@ public class QuestionController {
 
     @PostMapping("/question")
     public Question getNextQuestion() {
-        return inMemoryQuestions.getRandomInMemoryQuestion();
+        return questionDBService.getrandomQuestion();
     }
 
     @PostMapping("/new-question")
     @ResponseBody
     public Question addNewQuestion(@RequestBody Question question) {
-        inMemoryQuestions.addQuestion(question);
+        questionDBService.addQuestion(question);
         return question;
     }
 }

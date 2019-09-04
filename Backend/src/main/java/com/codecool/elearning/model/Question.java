@@ -1,14 +1,9 @@
 package com.codecool.elearning.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.*;
 
 
@@ -28,24 +23,8 @@ public class Question {
 
     private String question;
 
-    //private List<Answer> answers = new ArrayList<>();
+    @OneToMany(mappedBy = "question", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @EqualsAndHashCode.Exclude
+    private List<Answer> answers = new ArrayList<>();
 
-
-    //public void setAnswers(List<Answer> answers) {
-      //  this.answers = answers;
-    //}
-
-
-    //public List<Answer> getAnswers() {
-      //  return answers;
-    //}
-
-    //public void generateAnswer(boolean valid, String answerText) {
-      //      this.answers.add(new Answer(valid, answerText));
-        //}
-
-
-    //public void shuffleAnswers() {
-      //  Collections.shuffle(answers);
-    //}
 }

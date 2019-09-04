@@ -16,11 +16,6 @@ public class QuestionDBService {
     @Autowired
     private QuestionRepository questionRepository;
 
-    @Autowired
-    private Random random;
-
-    private Long lastQuestionId;
-
     public Question getrandomQuestion() {
 
         long count = questionRepository.count();
@@ -32,6 +27,10 @@ public class QuestionDBService {
             q = questionPage.getContent().get(0);
         }
         return q;
+    }
+
+    public void addQuestion(Question question){
+        questionRepository.save(question);
     }
 // not use many annotations
 

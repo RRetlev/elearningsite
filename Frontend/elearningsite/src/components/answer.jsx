@@ -9,7 +9,7 @@ class Answer extends Component {
     handleClick = () => {
         console.log("click");
 
-        if (this.props.answer.right) {
+        if (this.props.answer.rightAnswer) {
             {
                 this.props.onGoodAnswer()
             }

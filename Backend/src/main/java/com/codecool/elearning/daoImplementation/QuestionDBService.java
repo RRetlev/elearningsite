@@ -14,6 +14,11 @@ public class QuestionDBService {
     @Autowired
     private QuestionRepository questionRepository;
 
+
+    /**
+     * Returns a random question from the database
+     * @return the Question
+     */
     public Question getrandomQuestion() {
 
         long count = questionRepository.count();
@@ -27,6 +32,10 @@ public class QuestionDBService {
         return q;
     }
 
+    /**
+     * Adds the given question to the Database
+     * @param question your given question
+     */
     public void addQuestion(Question question){
         questionRepository.save(question);
     }

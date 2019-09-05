@@ -56,6 +56,31 @@ public class ELearningApplication {
                     .question(question)
                     .build();
 
+            Question question2 = Question.builder()
+                    .question("Second Question")
+                    .build();
+
+            Answer answer5 = Answer.builder()
+                    .text("nem")
+                    .rightAnswer(true)
+                    .question(question2)
+                    .build();
+            Answer answer6 = Answer.builder()
+                    .text("igen")
+                    .rightAnswer(false)
+                    .question(question2)
+                    .build();
+            Answer answer7 = Answer.builder()
+                    .text("igen")
+                    .rightAnswer(false)
+                    .question(question2)
+                    .build();
+            Answer answer8 = Answer.builder()
+                    .text("igen")
+                    .rightAnswer(false)
+                    .question(question2)
+                    .build();
+
 
             User user = User.builder()
                     .userName("Béla")
@@ -65,7 +90,9 @@ public class ELearningApplication {
             userRepository.save(user);
 
             question.setAnswers(Arrays.asList(answer1,answer2,answer3,answer4));
+            question2.setAnswers(Arrays.asList(answer5,answer6,answer7,answer8));
             questionRepository.save(question);
+            questionRepository.save(question2);
         };
     }
 

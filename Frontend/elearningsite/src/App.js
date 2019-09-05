@@ -5,26 +5,32 @@ import Container from './components/container';
 import AddQuestion from './components/pages/newquestion';
 import Header from "./components/layout/Header";
 import PageNotFound from "./components/pages/PageNotFound";
+import {connect} from 'react-redux';
+import {fetchQuestion} from "./services/ApiCallService";
 
 
 class App extends Component {
-    state = {
-        question: null,
-        answers: [],
-    };
+
+    // state = {
+    //     question: null,
+    //     answers: [],
+    // };
 
 
     componentDidMount() {
         console.log("DiD Mount");
-        fetch('http://localhost:8080/question')
-            .then(response => response.json())
-            .then(data =>
-                this.setState({
-                    answers: data.answers,
-                    question: data.question
-                })
-            )
-    }
+        fetchQuestion()
+            .then(data => this.props.setQuestion(data))
+
+        // fetch('http://localhost:8080/question')
+        //     .then(response => response.json())
+        //     .then(data =>
+        //         this.setState({
+        //             answers: data.answers,
+        //             question: data.question
+        //         })
+        //     )
+    };
 
 
     render() {
@@ -33,17 +39,11 @@ class App extends Component {
                 <div className="App">
                     <Header/>
                     <Switch>
-
                         <Route path="/new-question" component={() => <AddQuestion/>}/>
-                        <Route exact path="/" render={props => (
-                            <Container question={this.state.question}
-                                       answers={this.state.answers}
-                            />)}
-                        />
+                        <Route exact path="/" component={() => <Container/>}/>
                         <Route component={PageNotFound}/>
                     </Switch>
                 </div>
-
             </Router>
         );
     }
@@ -51,4 +51,21 @@ class App extends Component {
 
 }
 
-export default App;
+
+function mapStateToProps(state) {
+    return {
+        question: state.question,
+        answers: state.answers,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setQuestion: function (questionData) {
+            const action = {type: "FETCHQ", questionData};
+            dispatch(action);
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,4 +1,8 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {fetchQuestion} from "../../services/ApiCallService";
+
+
 
 class Timer extends Component {
     state = {
@@ -13,7 +17,7 @@ class Timer extends Component {
             });
             counter--;
             if (counter === 0) {
-                this.props.refreshPage();
+                fetchQuestion().then(data => this.props.setQuestion(data))
             }
         }, 1000);
     };
@@ -26,6 +30,20 @@ class Timer extends Component {
             </div>
         );
     }
+
+
 }
 
-export default Timer;
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setQuestion: function (questionData) {
+            const action = {type: "FETCHQ", questionData};
+            dispatch(action);
+        }
+
+    }
+};
+
+
+export default connect(null, mapDispatchToProps)(Timer);

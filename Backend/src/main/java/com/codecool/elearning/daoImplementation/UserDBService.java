@@ -15,6 +15,11 @@ public class UserDBService {
         return userRepository.getUserById(id);
     }
 
+    /**
+     * Updates the top score of the given user in the Database
+     * @param userName target user
+     * @param score new score
+     */
     public void updateScoreById(String userName, int score){
         userRepository.updateScoreById(userName,score);
     }

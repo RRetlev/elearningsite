@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 
 @Component
 public class QuestionDBService {
@@ -14,6 +16,11 @@ public class QuestionDBService {
     @Autowired
     private QuestionRepository questionRepository;
 
+
+    /**
+     * Returns a random question from the database
+     * @return the Question
+     */
     public Question getrandomQuestion() {
 
         long count = questionRepository.count();
@@ -27,8 +34,16 @@ public class QuestionDBService {
         return q;
     }
 
+    /**
+     * Adds the given question to the Database
+     * @param question your given question
+     */
     public void addQuestion(Question question){
         questionRepository.save(question);
+    }
+
+    public long getAllQuestionsCount(){
+        return questionRepository.count();
     }
 // not use many annotations
 

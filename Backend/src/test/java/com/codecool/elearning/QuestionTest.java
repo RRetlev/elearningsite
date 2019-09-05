@@ -2,6 +2,7 @@ package com.codecool.elearning;
 
 import com.codecool.elearning.controller.QuestionController;
 import com.codecool.elearning.daoImplementation.InMemoryQuestions;
+import com.codecool.elearning.daoImplementation.QuestionDBService;
 import com.codecool.elearning.model.gameEntity.Question;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
@@ -22,7 +23,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class QuestionTest {
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @LocalServerPort
     private int port;
@@ -31,16 +31,15 @@ public class QuestionTest {
     private InMemoryQuestions inMemoryQuestions;
 
     @Autowired
+    private QuestionDBService questionDBService;
+
+    @Autowired
     private TestRestTemplate restTemplate;
 
     @Autowired
     private QuestionController controller;
 
-    @Before
-    public void init() {
-        inMemoryQuestions.getInMemoryQuestions().clear();
-        inMemoryQuestions.addQuestions();
-    }
+
 
     @Test
     public void contextLoads() {
@@ -57,7 +56,7 @@ public class QuestionTest {
     @Test
     public void newQuestionAddedToInMemoryQuestions() {
 
-        int numberOfQuestions = inMemoryQuestions.getInMemoryQuestions().size();
+        int numberOfQuestions = (int)questionDBService.getAllQuestionsCount();
 
         String addQuestionUrl = "http://localhost:" + port + "/new-question";
 
@@ -77,7 +76,7 @@ public class QuestionTest {
         HttpEntity<Question> request = new HttpEntity<>(question, headers);
         restTemplate.postForObject(addQuestionUrl, request, String.class);
 
-        int newNumberOfQuestions = inMemoryQuestions.getInMemoryQuestions().size();
+        int newNumberOfQuestions = (int)questionDBService.getAllQuestionsCount();
 
         assertThat(newNumberOfQuestions).isEqualTo(numberOfQuestions+1);
 

@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 
 @Component
 public class QuestionDBService {
@@ -38,6 +40,10 @@ public class QuestionDBService {
      */
     public void addQuestion(Question question){
         questionRepository.save(question);
+    }
+
+    public long getAllQuestionsCount(){
+        return questionRepository.count();
     }
 // not use many annotations
 

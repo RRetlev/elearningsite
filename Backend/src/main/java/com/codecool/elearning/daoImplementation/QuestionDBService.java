@@ -1,5 +1,6 @@
 package com.codecool.elearning.daoImplementation;
 
+import com.codecool.elearning.model.gameEntity.Answer;
 import com.codecool.elearning.model.gameEntity.Question;
 import com.codecool.elearning.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,11 @@ public class QuestionDBService {
      * Adds the given question to the Database
      * @param question your given question
      */
-    public void addQuestion(Question question){
+    public void addQuestion(Question question, List<Answer> answers){
+        for (Answer answer:answers){
+            answer.setQuestion(question);
+        }
+        question.setAnswers(answers);
         questionRepository.save(question);
     }
 

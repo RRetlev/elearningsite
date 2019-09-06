@@ -1,18 +1,25 @@
 import React, {Component} from 'react';
 import Question from './question';
-import Answer from './answer';
-import AnswerContainer from './answercontainer'
+import AnswerContainer from './answercontainer';
+import {connect} from 'react-redux';
+
 
 class Container extends Component {
     render() {
         return (<div className="container">
             <img src={require(`../images/millionaire.png`)} className="App-logo" alt="its very bjutifull"/>
             <Question question={this.props.question}/>
-            <AnswerContainer
-                answers={this.props.answers}
-            />
+            <AnswerContainer/>
         </div>);
     }
 }
 
-export default Container;
+function mapStateToProps(state) {
+    return {
+        question: state.question,
+        answers: state.answers,
+    }
+}
+
+
+export default connect(mapStateToProps, null)(Container);

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 import './App.css';
-import Container from './components/container';
-import AddQuestion from './components/pages/newquestion';
+import QuestionAndAnswersContainer from './components/QuestionAndAnswersContainer';
+import AddQuestion from './components/pages/AskNewQuestion';
 import Header from "./components/layout/Header";
-import PageNotFound from "./components/pages/PageNotFound";
+import PageNotFound from "./components/pages/PageNotFound.jsx";
 import {connect} from 'react-redux';
 import {fetchQuestion} from "./services/ApiCallService";
 
@@ -40,7 +40,7 @@ class App extends Component {
                     <Header/>
                     <Switch>
                         <Route path="/new-question" component={() => <AddQuestion/>}/>
-                        <Route exact path="/" component={() => <Container/>}/>
+                        <Route exact path="/" component={() => <QuestionAndAnswersContainer/>}/>
                         <Route component={PageNotFound}/>
                     </Switch>
                 </div>

@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
-import Question from './question';
-import AnswerContainer from './answercontainer';
+import Question from './Question';
+import AnswersContainer from './AnswersContainer';
 import {connect} from 'react-redux';
 
 
-class Container extends Component {
+class QuestionAndAnswersContainer extends Component {
     render() {
         return (<div className="container">
             <img src={require(`../images/millionaire.png`)} className="App-logo" alt="its very bjutifull"/>
             <Question question={this.props.question}/>
-            <AnswerContainer/>
+            <AnswersContainer/>
         </div>);
     }
 }
@@ -22,4 +22,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, null)(Container);
+export default connect(mapStateToProps, null)(QuestionAndAnswersContainer);

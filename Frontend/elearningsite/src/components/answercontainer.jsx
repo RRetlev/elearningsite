@@ -43,7 +43,7 @@ class AnswerContainer extends Component {
                     <div><h1>Congrats your answer is correct</h1>
                         {/*<button onClick={this.refreshPage} className="btn btn-info">NEXT</button>*/}
                         <Timer seconds={5}
-                               displayCounter={true}
+                               displayCounter={false}
                         />
                     </div> : null}
             </div>
@@ -51,7 +51,7 @@ class AnswerContainer extends Component {
                 {this.state.isAnswerGiven && !this.state.isAnswerRight ? <div><h1>You stupid</h1>
                     {/*<button onClick={this.refreshPage} className="btn btn-info">NEXT</button>*/}
                     <Timer seconds={5}
-                           displayCounter={true}
+                           displayCounter={false}
                     />
                 </div> : null}
             </div>

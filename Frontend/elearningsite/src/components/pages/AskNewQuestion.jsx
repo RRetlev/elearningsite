@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 export class AddQuestion extends Component {
     state = {
         question: ' ',
-        trueanswer: ' ',
+        trueAnswer: ' ',
         false1: ' ',
         false2: ' ',
         false3: ' ',
@@ -15,7 +15,7 @@ export class AddQuestion extends Component {
             answers: [
                 {
                     right: true,
-                    text: this.state.trueanswer,
+                    text: this.state.trueAnswer,
                 },
                 {
                     right: false,
@@ -43,7 +43,7 @@ export class AddQuestion extends Component {
 
         })
             .then(res => console.log(res));
-        this.setState({question: ' ', trueanswer: ' ', false1: ' ', false2: ' ', false3: ' ',})
+        this.setState({question: ' ', trueAnswer: ' ', false1: ' ', false2: ' ', false3: ' ',})
     };
 
     onChange = (e) => this.setState({[e.target.name]: e.target.value});
@@ -63,7 +63,7 @@ export class AddQuestion extends Component {
                     />
                     <input required
                         type='text'
-                        name='trueanswer'
+                        name='trueAnswer'
                         onChange={this.onChange}
                         // style={{flex:'10', padding:'5px'}}
                         placeholder='True answer'

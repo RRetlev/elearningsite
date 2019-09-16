@@ -11,12 +11,13 @@ class Timer extends Component {
 
     componentDidMount() {
         let counter = this.props.seconds;
-        setInterval(() => {
+        let intId = setInterval(() => {
             this.setState({
                 seconds: counter,
             });
             counter--;
             if (counter === 0) {
+                clearInterval(intId);
                 fetchQuestion().then(data => this.props.setQuestion(data))
             }
         }, 1000);

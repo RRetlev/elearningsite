@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import Answer from './answer'
+import Answer from './Answer'
 import Timer from "./game-restrictions/Timer";
 import {connect} from 'react-redux';
 
 
-class AnswerContainer extends Component {
+class AnswersContainer extends Component {
     state = {
         isAnswerGiven: false,
         isAnswerRight: false,
@@ -66,4 +66,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect (mapStateToProps)(AnswerContainer);
+export default connect (mapStateToProps)(AnswersContainer);

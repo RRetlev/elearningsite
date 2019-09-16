@@ -6,11 +6,16 @@ import com.codecool.elearning.daoImplementation.QuestionDBService;
 import com.codecool.elearning.daoImplementation.UserDBService;
 import com.codecool.elearning.model.gameEntity.Answer;
 import com.codecool.elearning.model.gameEntity.Question;
+import com.codecool.elearning.model.gameEntity.Topic;
 import com.codecool.elearning.model.userEntity.QuestionGameUser;
+import com.codecool.elearning.repository.AnswerRepository;
+import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.swing.plaf.basic.BasicDesktopIconUI;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,6 +27,9 @@ public class QuestionController {
 
     @Autowired
     private QuestionDBService questionDBService;
+
+    @Autowired
+    private AnswerRepository answerRepository;
 
     @Autowired
     private UserDBService userDBService;
@@ -37,13 +45,13 @@ public class QuestionController {
     }
 
     @GetMapping("/user")
-    public QuestionGameUser getUser(){
-        return userDBService.getUserById(1l);
+    public QuestionGameUser getUser() {
+        return userDBService.getUserById(1L);
     }
 
     @PostMapping("/user")
     @ResponseBody
-    public QuestionGameUser setHighScore(@RequestBody QuestionGameUser questionGameUser){
+    public QuestionGameUser setHighScore(@RequestBody QuestionGameUser questionGameUser) {
         userDBService.updateScoreById(questionGameUser.getUserName(), questionGameUser.getScore());
         return questionGameUser;
     }
@@ -51,10 +59,19 @@ public class QuestionController {
     @PostMapping("/new-question")
     @ResponseBody
     public Question addNewQuestion(@RequestBody Question question) {
-        List<Answer> answers = question.getAnswers();
-        System.out.println(Arrays.asList(answers));
-        questionDBService.addQuestion(question,answers);
+        questionDBService.addQuestion(question);
+        answerRepository.updateQuestion(question);
         return question;
+    }
+
+    @GetMapping("/run/{topic}/{count}/start")
+    public void getRunWithTopic(@PathVariable("topic") Topic topic, @PathVariable("count") int count) {
+        questionDBService.getQuestionsByTopic(topic, count);
+    }
+
+    @GetMapping("/run/game")
+    public Question getQuestionFromRunQuestions() {
+        return questionDBService.getOneQuestionFromTopic();
     }
 }
 

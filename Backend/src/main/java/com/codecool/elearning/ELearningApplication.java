@@ -2,6 +2,7 @@ package com.codecool.elearning;
 
 import com.codecool.elearning.model.gameEntity.Answer;
 import com.codecool.elearning.model.gameEntity.Question;
+import com.codecool.elearning.model.gameEntity.Topic;
 import com.codecool.elearning.model.userEntity.QuestionGameUser;
 import com.codecool.elearning.repository.QuestionRepository;
 import com.codecool.elearning.repository.UserRepository;
@@ -33,6 +34,7 @@ public class ELearningApplication {
 
             Question question = Question.builder()
                     .question("Whats my favourite Color")
+                    .topic(Topic.Religion)
                     .build();
 
             Answer answer1 = Answer.builder()
@@ -58,6 +60,7 @@ public class ELearningApplication {
 
             Question question2 = Question.builder()
                     .question("Second Question")
+                    .topic(Topic.Humor)
                     .build();
 
             Answer answer5 = Answer.builder()

@@ -40,9 +40,6 @@ public class QuestionDBService {
      * @param question your given question
      */
     public void addQuestion(Question question, List<Answer> answers){
-        for (Answer answer:answers){
-            answer.setQuestion(question);
-        }
         question.setAnswers(answers);
         questionRepository.save(question);
     }

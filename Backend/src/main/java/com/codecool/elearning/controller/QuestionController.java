@@ -6,12 +6,12 @@ import com.codecool.elearning.daoImplementation.QuestionDBService;
 import com.codecool.elearning.daoImplementation.UserDBService;
 import com.codecool.elearning.model.gameEntity.Answer;
 import com.codecool.elearning.model.gameEntity.Question;
-import com.codecool.elearning.model.userEntity.User;
+import com.codecool.elearning.model.userEntity.QuestionGameUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.persistence.GeneratedValue;
+import java.util.Arrays;
 import java.util.List;
 
 @CrossOrigin
@@ -35,23 +35,24 @@ public class QuestionController {
     public Question getNextQuestion() {
         return questionDBService.getrandomQuestion();
     }
+
     @GetMapping("/user")
-    public User getUser(){
+    public QuestionGameUser getUser(){
         return userDBService.getUserById(1l);
     }
 
     @PostMapping("/user")
     @ResponseBody
-    public User setHighScore(@RequestBody User user){
-        userDBService.updateScoreById(user.getUserName(),user.getScore());
-        return user;
+    public QuestionGameUser setHighScore(@RequestBody QuestionGameUser questionGameUser){
+        userDBService.updateScoreById(questionGameUser.getUserName(), questionGameUser.getScore());
+        return questionGameUser;
     }
 
     @PostMapping("/new-question")
     @ResponseBody
     public Question addNewQuestion(@RequestBody Question question) {
         List<Answer> answers = question.getAnswers();
-        System.out.println(answers);
+        System.out.println(Arrays.asList(answers));
         questionDBService.addQuestion(question,answers);
         return question;
     }

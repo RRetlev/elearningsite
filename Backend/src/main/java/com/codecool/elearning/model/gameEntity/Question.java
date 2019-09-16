@@ -11,9 +11,6 @@ import java.util.*;
 @AllArgsConstructor
 @Builder
 @Entity
-
-
-
 public class Question {
 
     @Id
@@ -22,7 +19,7 @@ public class Question {
 
     private String question;
 
-    @OneToMany(mappedBy = "question", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "question",cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @EqualsAndHashCode.Exclude
     private List<Answer> answers = new ArrayList<>();
 

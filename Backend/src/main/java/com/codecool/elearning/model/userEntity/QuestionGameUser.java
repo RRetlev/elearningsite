@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Builder
 @Entity
 @Table(name="`user`")
-public class User {
+public class QuestionGameUser {
 
     @Id
     @GeneratedValue

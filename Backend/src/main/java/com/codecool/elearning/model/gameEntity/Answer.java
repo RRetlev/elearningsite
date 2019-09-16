@@ -25,8 +25,7 @@ public class Answer {
     private String text;
     private boolean rightAnswer;
 
-    @ManyToOne
     @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     private Question question;
-
 }

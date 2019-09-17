@@ -41,9 +41,10 @@ public class ELearningApplication {
         return args -> {
 
             QuestionGameUser user1 = QuestionGameUser.builder()
-                    .userName("Béla")
+                    .userName("Bela")
                     .psw(passwordEncoder.encode("I am Béla"))
                     .score(0)
+                    .roles(Arrays.asList("User"))
                     .build();
 
             Question question = Question.builder()

@@ -49,6 +49,11 @@ public class QuestionController {
         return userDBService.getUserById(1L);
     }
 
+    @PostMapping("/register")
+    public void registerUserInDatabase(@RequestBody QuestionGameUser questionGameUser){
+        userDBService.registerNewUser(questionGameUser);
+    }
+
     @PostMapping("/user")
     @ResponseBody
     public QuestionGameUser setHighScore(@RequestBody QuestionGameUser questionGameUser) {

@@ -22,11 +22,10 @@ public class Answer {
     private long id;
 
 
-    private String text;
     private boolean rightAnswer;
+    private String text;
 
-    @ManyToOne
     @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     private Question question;
-
 }

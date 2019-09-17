@@ -2,7 +2,8 @@ package com.codecool.elearning;
 
 import com.codecool.elearning.model.gameEntity.Answer;
 import com.codecool.elearning.model.gameEntity.Question;
-import com.codecool.elearning.model.userEntity.User;
+import com.codecool.elearning.model.gameEntity.Topic;
+import com.codecool.elearning.model.userEntity.QuestionGameUser;
 import com.codecool.elearning.repository.QuestionRepository;
 import com.codecool.elearning.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ public class ELearningApplication {
 
             Question question = Question.builder()
                     .question("Whats my favourite Color")
+                    .topic(Topic.Religion)
                     .build();
 
             Answer answer1 = Answer.builder()
@@ -58,6 +60,7 @@ public class ELearningApplication {
 
             Question question2 = Question.builder()
                     .question("Second Question")
+                    .topic(Topic.Humor)
                     .build();
 
             Answer answer5 = Answer.builder()
@@ -82,12 +85,12 @@ public class ELearningApplication {
                     .build();
 
 
-            User user = User.builder()
+            QuestionGameUser questionGameUser = QuestionGameUser.builder()
                     .userName("Béla")
                     .score(0)
                     .build();
 
-            userRepository.save(user);
+            userRepository.save(questionGameUser);
 
             question.setAnswers(Arrays.asList(answer1,answer2,answer3,answer4));
             question2.setAnswers(Arrays.asList(answer5,answer6,answer7,answer8));

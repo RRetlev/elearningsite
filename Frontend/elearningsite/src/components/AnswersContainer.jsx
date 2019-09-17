@@ -50,6 +50,11 @@ class AnswersContainer extends Component {
     makeAQuestionFetch = () => {
         fetchQuestion().then((data) => {
             this.props.setQuestion(data);
+            this.setState({
+                setRestartOnTimer: true,
+                isAnswerGiven: false,
+            });
+            this.props.setLocalClassname(['btn', 'btn-primary', 'col', 'buttonmargin']);
         })
     };
 

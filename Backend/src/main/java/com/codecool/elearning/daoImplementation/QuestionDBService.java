@@ -20,7 +20,7 @@ public class QuestionDBService {
 
 
     @Autowired
-    private static QuestionRepository questionRepository;
+    private QuestionRepository questionRepository;
 
 
     /**

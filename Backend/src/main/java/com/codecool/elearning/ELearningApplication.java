@@ -11,6 +11,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Arrays;
 
@@ -23,6 +25,12 @@ public class ELearningApplication {
     @Autowired
     UserRepository userRepository;
 
+    private final PasswordEncoder passwordEncoder;
+
+    public ELearningApplication() {
+        this.passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(ELearningApplication.class, args);
     }
@@ -31,6 +39,12 @@ public class ELearningApplication {
     @Bean
     public CommandLineRunner init(){
         return args -> {
+
+            QuestionGameUser user1 = QuestionGameUser.builder()
+                    .userName("Béla")
+                    .psw(passwordEncoder.encode("I am Béla"))
+                    .score(0)
+                    .build();
 
             Question question = Question.builder()
                     .question("Whats my favourite Color")
@@ -85,12 +99,9 @@ public class ELearningApplication {
                     .build();
 
 
-            QuestionGameUser questionGameUser = QuestionGameUser.builder()
-                    .userName("Béla")
-                    .score(0)
-                    .build();
 
-            userRepository.save(questionGameUser);
+
+            userRepository.save(user1);
 
             question.setAnswers(Arrays.asList(answer1,answer2,answer3,answer4));
             question2.setAnswers(Arrays.asList(answer5,answer6,answer7,answer8));

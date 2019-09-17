@@ -11,6 +11,8 @@ import Provider from "react-redux/es/components/Provider";
 const initialState = {
     question: '',
     answers: [],
+    second: null,
+    localClassname: ['btn', 'btn-primary', 'col', 'buttonmargin']
 };
 
 function reducer(state = initialState, action) {
@@ -20,6 +22,16 @@ function reducer(state = initialState, action) {
                 ...state,
                 question: action.questionData.question,
                 answers: action.questionData.answers,
+            };
+        case 'SETSEC':
+            return {
+                ...state,
+                seconds: action.seconds,
+            };
+        case 'SETCSS':
+            return {
+                ...state,
+                localClassname: action.cssData
             };
         default:
             return state;

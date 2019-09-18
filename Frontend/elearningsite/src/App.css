@@ -68,9 +68,6 @@ input[type='text']:hover {
     cursor: pointer;
 }
 
-.input-field-wrapper {
-
-}
 
 form {
     background-color: #ffffff99;
@@ -128,7 +125,7 @@ input:focus:-ms-input-placeholder {
 }
 
 .background-color{
-    background-color : #dcc7be;
+    background-color : #f1e8e5;
 }
 
 .answer-color{

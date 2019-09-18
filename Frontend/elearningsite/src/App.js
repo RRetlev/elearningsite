@@ -3,7 +3,7 @@ import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 import './App.css';
 import QuestionAndAnswersContainer from './components/QuestionAndAnswersContainer';
 import AddQuestion from './components/pages/AskNewQuestion';
-import Header from "./components/layout/Header.jsx";
+import Header from "./components/layout/HeaderTest.js";
 import PageNotFound from "./components/pages/PageNotFound.jsx";
 import {connect} from 'react-redux';
 import ServerNotFound from "./components/pages/ServerNotFound.jsx";

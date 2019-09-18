@@ -6,7 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import {createStore} from "redux";
 import Provider from "react-redux/es/components/Provider";
-
+import 'bootstrap/dist/css/bootstrap.css';
+// import 'antd/dist/antd.css';
+import 'antd/dist/antd.less';
 
 const initialState = {
     question: '',

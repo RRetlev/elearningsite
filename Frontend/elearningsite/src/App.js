@@ -8,6 +8,7 @@ import PageNotFound from "./components/pages/PageNotFound.jsx";
 import {connect} from 'react-redux';
 import ServerNotFound from "./components/pages/ServerNotFound.jsx";
 import HomePage from "./components/pages/HomePage";
+import StartNewRun from "./components/pages/StartNewRun";
 
 class App extends Component {
 
@@ -19,7 +20,8 @@ class App extends Component {
                     <Switch>
                         <Route path="/new-question" component={() => <AddQuestion style="background-color"/>}/>
                         <Route exact path="/" component={HomePage}/>
-                        <Route exact path="/mode1" component={QuestionAndAnswersContainer}/>
+                        <Route exact path="/learn" component={QuestionAndAnswersContainer}/>
+                        <Route exact path="/run" component={StartNewRun}/>
                         <Route path="/error/500" component={ServerNotFound}/>
                         <Route component={PageNotFound}/>
                     </Switch>

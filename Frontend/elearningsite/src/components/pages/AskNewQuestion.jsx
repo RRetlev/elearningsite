@@ -45,8 +45,7 @@ export class AddQuestion extends Component {
             body: JSON.stringify(result)
 
         })
-            .then(res => console.log(res));
-        this.setState({question: ' ', trueAnswer: ' ', false1: ' ', false2: ' ', false3: ' ', topic: ' '})
+        this.setState({question: ' ', trueAnswer: ' ', false1: ' ', false2: ' ', false3: ' ',topic: ' '})
     };
 
     onChange = (e) => this.setState({[e.target.name]: e.target.value});

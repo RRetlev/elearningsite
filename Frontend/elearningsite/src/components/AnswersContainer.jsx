@@ -88,7 +88,7 @@ class AnswersContainer extends Component {
                 {this.state.isAnswerRight ?
                     <div><h1>Congrats your answer is correct</h1>
                         <button onClick={this.onClickHandler} className="btn btn-info">NEXT</button>
-                    </div> : <div><h1>You stupid</h1>
+                    </div> : <div><h1>Your answer is not correct</h1>
                         <button onClick={this.onClickHandler} className="btn btn-info">NEXT</button>
                     </div>
                 }

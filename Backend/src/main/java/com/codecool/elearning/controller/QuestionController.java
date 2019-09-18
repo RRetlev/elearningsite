@@ -69,7 +69,7 @@ public class QuestionController {
         return question;
     }
 
-    @GetMapping("/run/{topic}/{count}/start")
+    @GetMapping("/run/{topic}/{count}")
     public void getRunWithTopic(@PathVariable("topic") Topic topic, @PathVariable("count") int count) {
         questionDBService.getQuestionsByTopic(topic, count);
     }

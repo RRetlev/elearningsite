@@ -5,7 +5,9 @@ class HomePage extends Component {
         return (
             <div>
                 <h1>Welcome on the site!</h1>
-                <a href="/mode1">Play!</a>
+                <a href="/mode1">Learn</a>
+                <br/>
+                <a href="/mode1">Test your knowledge</a> 
             </div>
         );
     }

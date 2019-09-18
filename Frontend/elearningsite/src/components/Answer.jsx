@@ -12,7 +12,6 @@ class Answer extends Component {
         } else {
             this.props.onBadAnswer();
             this.props.setLocalClassname([...this.props.localClassname, "red"]);
-
         }
     };
 

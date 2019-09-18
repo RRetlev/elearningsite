@@ -47,27 +47,28 @@
     border-color: green !important;
 }
 
-input[type='text']{
+input[type='text'] {
     width: 60%;
     margin-bottom: 20px;
     padding: 12px;
     border: 3px solid #ccc;
     border-radius: 3px;
 }
-input:focus{
+
+input:focus {
     border: 3px solid black;
     outline: 0;
     background-color: lightgrey;
 }
 
-input[type='text']:hover{
+input[type='text']:hover {
     border: 3px solid black;
     border-radius: 3px;
     background-color: lightgrey;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.input-field-wrapper{
+.input-field-wrapper {
 
 }
 
@@ -111,10 +112,12 @@ input:focus:-moz-placeholder {
     color: black;
     background-color: lightgrey;
 }
+
 input:focus::-moz-placeholder {
     color: black;
     background-color: lightgrey;
 }
+
 input:focus:-ms-input-placeholder {
     color: black;
     background-color: lightgrey;

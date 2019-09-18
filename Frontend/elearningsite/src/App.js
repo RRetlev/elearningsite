@@ -17,7 +17,7 @@ class App extends Component {
                 <div className="App background-color">
                     <Header/>
                     <Switch>
-                        <Route path="/new-question" component={() => <AddQuestion/>}/>
+                        <Route path="/new-question" component={() => <AddQuestion style="background-color"/>}/>
                         <Route exact path="/" component={HomePage}/>
                         <Route exact path="/mode1" component={QuestionAndAnswersContainer}/>
                         <Route path="/error/500" component={ServerNotFound}/>

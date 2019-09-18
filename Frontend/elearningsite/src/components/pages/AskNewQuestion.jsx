@@ -7,6 +7,7 @@ export class AddQuestion extends Component {
         false1: ' ',
         false2: ' ',
         false3: ' ',
+        topic: ' '
     };
 
     onSubmit = (e) => {
@@ -30,7 +31,8 @@ export class AddQuestion extends Component {
                     right: true,
                     text: this.state.false3,
                 }
-            ]
+            ],
+            topic: this.state.topic
         };
 
         fetch('http://localhost:8080/new-question', {
@@ -44,16 +46,16 @@ export class AddQuestion extends Component {
 
         })
             .then(res => console.log(res));
-        this.setState({question: ' ', trueAnswer: ' ', false1: ' ', false2: ' ', false3: ' ',})
+        this.setState({question: ' ', trueAnswer: ' ', false1: ' ', false2: ' ', false3: ' ',topic: ' '})
     };
 
     onChange = (e) => this.setState({[e.target.name]: e.target.value});
 
     render() {
         return (
-            <form onSubmit={this.onSubmit} >
+            <form onSubmit={this.onSubmit} className="background-color"  >
 
-                <div className="input-field-wrapper">
+                <div className="background-color">
                     <input required
                         type='text'
                         name='question'
@@ -89,6 +91,19 @@ export class AddQuestion extends Component {
                         placeholder='Third false answer'
                     />
                 </div>
+                <select name="topic" onChange={this.onChange} required >
+                    <option value="" selected disabled hidden >Choose a topic</option>
+                    <option value="Programming">Programming</option>
+                    <option value="History">History</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Maths">Maths</option>
+                    <option value="Literature">Literature</option>
+                    <option value="Religion">Religion</option>
+                    <option value="Tech">Tech</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Humor">Humor</option>
+                    <option value="Movies">Movies</option>
+                </select>
                 <input
                     type='submit'
                     value='Submit'

@@ -14,7 +14,7 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <div className="App">
+                <div className="App background-color">
                     <Header/>
                     <Switch>
                         <Route path="/new-question" component={() => <AddQuestion/>}/>

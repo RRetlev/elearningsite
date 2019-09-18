@@ -13,15 +13,15 @@ const Header = () => {
 }
 
 const headerStyle = {
-    background: '#333',
-    color: '#fff',
+    background: '#cbb9a8',
+    color: '#1f271b',
     textAlign: 'center',
     padding: '10px',
     fontWeight: 'bold',
 };
 
 const linkStyle = {
-    color: 'white',
+    color: '#1f271b',
     fontsize: '16',
     fontWeight: 'bold',
 };

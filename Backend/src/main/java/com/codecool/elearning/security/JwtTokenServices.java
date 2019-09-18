@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
 import java.util.Date;
@@ -50,9 +51,11 @@ public class JwtTokenServices {
                 .compact();
     }
     String getTokenFromRequest(HttpServletRequest req) {
-        String bearerToken = req.getHeader("Authorization");
-        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
-            return bearerToken.substring(7, bearerToken.length());
+        Cookie[] bearerToken = req.getCookies();
+        if (bearerToken != null /*&& bearerToken[0].startsWith("Bearer ")*/) {
+            System.out.println(bearerToken[0].getValue());
+            System.out.println(bearerToken[0].getName());
+            return bearerToken[0].getValue()/*substring(7)*/;
         }
         return null;
     }

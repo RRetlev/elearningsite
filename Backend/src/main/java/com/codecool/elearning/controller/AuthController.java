@@ -10,11 +10,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +34,9 @@ public class AuthController {
     }
 
     @PostMapping("/signin")
-    public ResponseEntity signin(@RequestBody UserCredentials data) {
+    public ResponseEntity signin(@RequestBody UserCredentials data, HttpServletResponse response,
+                                 @CookieValue(value = "username",defaultValue ="Ádám") String userName) {
+
         try {
             String username = data.getUsername();
             // authenticationManager.authenticate calls loadUserByUsername in CustomUserDetailsService
@@ -49,7 +51,11 @@ public class AuthController {
             Map<Object, Object> model = new HashMap<>();
             model.put("username", username);
             model.put("roles", roles);
-            model.put("token", token);
+
+            Cookie cookie=new Cookie("token",token);
+            cookie.setHttpOnly(true);
+            response.addCookie(cookie);
+
             return ResponseEntity.ok(model);
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username/password supplied");

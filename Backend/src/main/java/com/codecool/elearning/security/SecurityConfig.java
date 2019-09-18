@@ -29,12 +29,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .httpBasic().disable()
+                .cors()
+                .and()
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
                 .antMatchers("/auth/signin").permitAll()// allowed by anyone
-                .antMatchers("new-question").authenticated()
+                .antMatchers(HttpMethod.POST,"/new-question").permitAll()
+                .antMatchers(HttpMethod.GET,"/new-question").permitAll()
                 //.antMatchers(HttpMethod.GET,"/new-question").hasRole("ADMIN")
                 //.antMatchers(HttpMethod.POST,"/new-question").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET,"/question").permitAll()

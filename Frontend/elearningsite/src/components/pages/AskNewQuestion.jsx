@@ -10,6 +10,7 @@ export class AddQuestion extends Component {
     };
 
     onSubmit = (e) => {
+        e.preventDefault();
         const result = {
             question: this.state.question,
             answers: [
@@ -50,14 +51,13 @@ export class AddQuestion extends Component {
 
     render() {
         return (
-            <form onSubmit={this.onSubmit} /*style={{display:'flex'}}*/>
+            <form onSubmit={this.onSubmit} >
 
                 <div className="input-field-wrapper">
                     <input required
                         type='text'
                         name='question'
                         onChange={this.onChange}
-                        // style={{flex:'10', padding:'5px'}}
                         placeholder='Question'
 
                     />
@@ -65,7 +65,6 @@ export class AddQuestion extends Component {
                         type='text'
                         name='trueAnswer'
                         onChange={this.onChange}
-                        // style={{flex:'10', padding:'5px'}}
                         placeholder='True answer'
 
                     />
@@ -73,7 +72,6 @@ export class AddQuestion extends Component {
                         type='text'
                         name='false1'
                         onChange={this.onChange}
-                        // style={{flex:'10', padding:'5px'}}
                         placeholder='First false answer'
 
                     />
@@ -81,7 +79,6 @@ export class AddQuestion extends Component {
                         type='text'
                         name='false2'
                         onChange={this.onChange}
-                        // style={{flex: '10', padding: '5px'}}
                         placeholder='Second false answer'
 
                     />
@@ -89,7 +86,6 @@ export class AddQuestion extends Component {
                         type='text'
                         name='false3'
                         onChange={this.onChange}
-                        // style={{flex:'10', padding:'5px'}}
                         placeholder='Third false answer'
                     />
                 </div>
@@ -97,7 +93,6 @@ export class AddQuestion extends Component {
                     type='submit'
                     value='Submit'
                     className='submit-btn'
-                    // style={{flex:1}}
                 />
             </form>
 

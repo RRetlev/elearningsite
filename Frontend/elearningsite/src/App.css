@@ -122,3 +122,23 @@ input:focus:-ms-input-placeholder {
     color: black;
     background-color: lightgrey;
 }
+
+.question-color{
+    color : #0b4f6c;
+}
+
+.background-color{
+    background-color : #dcc7be;
+}
+
+.answer-color{
+    color : #145c9e;
+}
+
+.other-text-color{
+    color : #1f271b;
+}
+
+.slightly-darker-than-background{
+    color : #cbb9a8;
+}

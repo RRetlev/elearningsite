@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button } from 'antd';
 
-class RegisterModal extends React.Component {
+class LoginModal extends React.Component {
     state = { visible: false };
 
     showModal = () => {
@@ -28,7 +28,7 @@ class RegisterModal extends React.Component {
         return (
             <div>
                 <Button className="authBTN" type="primary" onClick={this.showModal}>
-                    Register
+                     Log in
                 </Button>
                 <Modal
                     title="Basic Modal"
@@ -45,4 +45,4 @@ class RegisterModal extends React.Component {
     }
 }
 
-export default RegisterModal;
+export default LoginModal;

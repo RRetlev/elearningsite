@@ -123,22 +123,28 @@ input:focus:-ms-input-placeholder {
     background-color: lightgrey;
 }
 
-.question-color{
-    color : #0b4f6c;
+.question-color {
+    color: #0b4f6c;
 }
 
-.background-color{
-    background-color : #dcc7be;
+.background-color {
+    background-color: #dcc7be;
 }
 
-.answer-color{
-    color : #145c9e;
+.answer-color {
+    color: #145c9e;
 }
 
-.other-text-color{
-    color : #1f271b;
+.other-text-color {
+    color: #1f271b;
 }
 
-.slightly-darker-than-background{
-    color : #cbb9a8;
+.slightly-darker-than-background {
+    color: #cbb9a8;
+}
+
+.authBTN {
+    float: left;
+    width: 99px;
+    margin: 4px;
 }

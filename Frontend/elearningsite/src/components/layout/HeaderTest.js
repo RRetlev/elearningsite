@@ -4,11 +4,10 @@ import RegisterModal from "../modal/RegisterModal";
 
 const HeaderTest = () => {
     return (
-        <div>
+        <div style={headerStyle}>
             <PageHeader
                 onBack={() => window.history.back()}
                 title="Let's be a MILLIONAIRE,"
-                tags={<Tag color="blue">Running</Tag>}
                 subTitle="User Name"
                 extra={[
                     <Button key="3">Operation</Button>,
@@ -31,4 +30,7 @@ const HeaderTest = () => {
     );
 };
 
+const headerStyle = {
+    background: '#333 ',
+};
 export default HeaderTest;

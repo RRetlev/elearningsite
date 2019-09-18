@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 import './App.css';
 import QuestionAndAnswersContainer from './components/QuestionAndAnswersContainer';

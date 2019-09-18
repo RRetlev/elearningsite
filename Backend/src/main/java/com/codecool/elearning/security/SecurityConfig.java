@@ -34,9 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/auth/signin").permitAll()// allowed by anyone
-                .antMatchers(HttpMethod.GET,"/new-question").authenticated()
-                .antMatchers(HttpMethod.POST,"/new-question").authenticated()
-                .antMatchers(HttpMethod.GET,"/question").permitAll()
+                .antMatchers("new-question").authenticated()
+                //.antMatchers(HttpMethod.GET,"/new-question").hasRole("ADMIN")
+                //.antMatchers(HttpMethod.POST,"/new-question").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET,"/question").denyAll()
                 .antMatchers(HttpMethod.GET, "/asdds").authenticated() // allowed only when signed in
                 .antMatchers(HttpMethod.DELETE, "/elmentem").hasRole("ADMIN") // allowed if signed in with ADMIN role
                 .anyRequest().denyAll()

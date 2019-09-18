@@ -53,8 +53,9 @@ public class JwtTokenServices {
     String getTokenFromRequest(HttpServletRequest req) {
         Cookie[] bearerToken = req.getCookies();
         if (bearerToken != null /*&& bearerToken[0].startsWith("Bearer ")*/) {
-            System.out.println(bearerToken[0]);
-            return bearerToken[0].getName()/*substring(7)*/;
+            System.out.println(bearerToken[0].getValue());
+            System.out.println(bearerToken[0].getName());
+            return bearerToken[0].getValue()/*substring(7)*/;
         }
         return null;
     }

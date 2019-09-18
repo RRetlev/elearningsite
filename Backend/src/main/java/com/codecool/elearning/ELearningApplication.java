@@ -44,7 +44,7 @@ public class ELearningApplication {
                     .userName("Bela")
                     .psw(passwordEncoder.encode("I am Béla"))
                     .score(0)
-                    .roles(Arrays.asList("User"))
+                    .roles(Arrays.asList("USER"))
                     .build();
 
             Question question = Question.builder()

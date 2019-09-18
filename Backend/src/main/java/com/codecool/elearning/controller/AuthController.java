@@ -51,9 +51,8 @@ public class AuthController {
             Map<Object, Object> model = new HashMap<>();
             model.put("username", username);
             model.put("roles", roles);
-            model.put("token", token);
 
-            Cookie cookie=new Cookie("username",username);
+            Cookie cookie=new Cookie("token",token);
             cookie.setHttpOnly(true);
             response.addCookie(cookie);
 

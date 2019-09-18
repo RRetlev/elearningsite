@@ -15,11 +15,6 @@ module.exports = override(
             '@text-color-secondary':'#fff',
             '@border-color-base':'#111',
             '@disabled-color':'#027b00',
-            '@primary-7':'#6cff77',
-            '@primary-8':'#004861',
-            '@primary-9':'#ff394f',
-            '@primary-10':'#5dffe5',
-
         },
     }),
 );

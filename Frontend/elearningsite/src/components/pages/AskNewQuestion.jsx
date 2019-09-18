@@ -46,53 +46,58 @@ export class AddQuestion extends Component {
 
         })
             .then(res => console.log(res));
-        this.setState({question: ' ', trueAnswer: ' ', false1: ' ', false2: ' ', false3: ' ',topic: ' '})
+        this.setState({question: ' ', trueAnswer: ' ', false1: ' ', false2: ' ', false3: ' ', topic: ' '})
     };
 
     onChange = (e) => this.setState({[e.target.name]: e.target.value});
 
     render() {
         return (
-            <form onSubmit={this.onSubmit} className="background-color"  >
+            <form onSubmit={this.onSubmit} className="background-color">
 
                 <div className="background-color">
                     <input required
-                        type='text'
-                        name='question'
-                        onChange={this.onChange}
-                        placeholder='Question'
+                           className="askInput"
+                           type='text'
+                           name='question'
+                           onChange={this.onChange}
+                           placeholder='Question'
 
                     />
                     <input required
-                        type='text'
-                        name='trueAnswer'
-                        onChange={this.onChange}
-                        placeholder='True answer'
+                           className="askInput"
+                           type='text'
+                           name='trueAnswer'
+                           onChange={this.onChange}
+                           placeholder='True answer'
 
                     />
                     <input required
-                        type='text'
-                        name='false1'
-                        onChange={this.onChange}
-                        placeholder='First false answer'
+                           className="askInput"
+                           type='text'
+                           name='false1'
+                           onChange={this.onChange}
+                           placeholder='First false answer'
 
                     />
                     <input required
-                        type='text'
-                        name='false2'
-                        onChange={this.onChange}
-                        placeholder='Second false answer'
+                           className="askInput"
+                           type='text'
+                           name='false2'
+                           onChange={this.onChange}
+                           placeholder='Second false answer'
 
                     />
                     <input required
-                        type='text'
-                        name='false3'
-                        onChange={this.onChange}
-                        placeholder='Third false answer'
+                           className="askInput"
+                           type='text'
+                           name='false3'
+                           onChange={this.onChange}
+                           placeholder='Third false answer'
                     />
                 </div>
-                <select name="topic" onChange={this.onChange} required >
-                    <option value="" selected disabled hidden >Choose a topic</option>
+                <select name="topic" onChange={this.onChange} required>
+                    <option value="" selected disabled hidden>Choose a topic</option>
                     <option value="Programming">Programming</option>
                     <option value="History">History</option>
                     <option value="Biology">Biology</option>

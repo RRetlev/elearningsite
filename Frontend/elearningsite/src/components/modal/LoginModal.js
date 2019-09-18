@@ -1,8 +1,9 @@
 import React from "react";
-import { Modal, Button } from 'antd';
+import {Modal, Button} from 'antd';
+import LoginForm from "./form/LoginForm";
 
 class LoginModal extends React.Component {
-    state = { visible: false };
+    state = {visible: false};
 
     showModal = () => {
         this.setState({
@@ -27,8 +28,8 @@ class LoginModal extends React.Component {
     render() {
         return (
             <div>
-                <Button className="authBTN" type="primary" onClick={this.showModal}>
-                     Log in
+                <Button  className="authBTN" type="primary" onClick={this.showModal}>
+                    Log in
                 </Button>
                 <Modal
                     title="Basic Modal"
@@ -36,9 +37,7 @@ class LoginModal extends React.Component {
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
                 >
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
+                    <LoginForm/>
                 </Modal>
             </div>
         );

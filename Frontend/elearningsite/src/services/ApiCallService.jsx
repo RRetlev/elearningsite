@@ -38,3 +38,14 @@ export function postUserLogin(username, password) {
             }),
     })
 }
+
+
+export function postUserLogout() {
+    return fetch('http://localhost:8080/auth/logout', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    })
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import {Modal, Button} from 'antd';
 import LoginForm from "./form/LoginForm";
+import {connect} from 'react-redux';
 
 class LoginModal extends React.Component {
     state = {
@@ -24,6 +25,7 @@ class LoginModal extends React.Component {
         this.setState({
             visible: false,
         });
+        this.props.setIsWrongCredentials(false);
     };
 
     handleCancel = e => {
@@ -31,6 +33,7 @@ class LoginModal extends React.Component {
         this.setState({
             visible: false,
         });
+        this.props.setIsWrongCredentials(false);
     };
 
     render() {
@@ -47,10 +50,33 @@ class LoginModal extends React.Component {
                 >
                     <LoginForm
                         closeModal={this.closeModal}/>
+                    {
+                        this.props.wrongLogInCredentials
+                            ?
+                            <div><p>Incorrect Username or Password! </p>
+                                <p>Please try again!</p>
+                            </div> : null
+                    }
                 </Modal>
+
             </div>
         );
     }
 }
 
-export default LoginModal;
+function mapStateToProps(state) {
+    return {
+        wrongLogInCredentials: state.wrongLogInCredentials,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setIsWrongCredentials: function (logInBooleanType) {
+            const action = {type: "SETWRONGLOGINCRED", logInBooleanType};
+            dispatch(action);
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);

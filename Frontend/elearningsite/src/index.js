@@ -20,6 +20,7 @@ const initialState = {
     isUserNameAlreadyInUse: false,
     isRegisterSuccessful: false,
     isPasswordSame: true,
+    isRun: false,
 };
 
 function reducer(state = initialState, action) {
@@ -69,6 +70,11 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 isPasswordSame: action.passSameBoolean
+            };
+        case 'SETISRUN':
+            return {
+                ...state,
+                isRun: action.isRunBoolean
             };
         default:
             return state;

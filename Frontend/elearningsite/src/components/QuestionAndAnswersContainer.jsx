@@ -43,6 +43,7 @@ function mapStateToProps(state) {
     return {
         question: state.question,
         answers: state.answers,
+        isRun: state.isRun,
     }
 }
 
@@ -50,6 +51,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setQuestion: function (questionData) {
             const action = {type: "FETCHQ", questionData};
+            dispatch(action);
+        },
+        setIsRun: function (isRunBoolean) {
+            const action = {type: "SETISRUN", isRunBoolean};
             dispatch(action);
         }
     }

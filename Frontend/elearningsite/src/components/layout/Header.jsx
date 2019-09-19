@@ -14,8 +14,6 @@ const Header = () => {
                 |
                 <Link style={linkStyle} to={"/new-question"}> Ask a question! </Link>
             </div>
-
-
         </header>
 
     )

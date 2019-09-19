@@ -1,18 +1,24 @@
-import React, { Component } from 'react'
-import { withRouter} from 'react-router-dom'
-
+import React, {Component} from 'react'
+import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux';
 
 class StartNewRun extends Component {
     state = {
         topicName: "",
-        numOfQuesitions: 0
+        numOfQuestions: 0
+    }
+
+    componentDidMount() {
+        if (!this.props.isRun) {
+            this.props.setIsRun(true);
+        }
     }
 
     onSubmit = (e) => {
         e.preventDefault();
         const result = {
             topicName: this.state.topicName,
-            numOfQuesitions: this.state.numOfQuestions
+            numOfQuestions: this.state.numOfQuestions
         }
         fetch(`http://localhost:8080/run`,
             {
@@ -26,19 +32,20 @@ class StartNewRun extends Component {
             })
         this.setState({
             topicName: "",
-            numOfQuesitions: 0
+            numOfQuestions: 0
         })
         this.props.history.push("/run/game")
 
     }
 
-    onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+    onChange = (e) => this.setState({[e.target.name]: e.target.value});
+
     render() {
         return (<div>
             <form onSubmit={this.onSubmit}>
 
-                <select name="topicName" onChange={this.onChange} required >
-                    <option value="" selected disabled hidden >Choose a topic</option>
+                <select name="topicName" onChange={this.onChange} required>
+                    <option value="" selected disabled hidden>Choose a topic</option>
                     <option value="Programming">Programming</option>
                     <option value="History">History</option>
                     <option value="Biology">Biology</option>
@@ -70,4 +77,20 @@ class StartNewRun extends Component {
     }
 }
 
-export default withRouter(StartNewRun);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setIsRun: function (isRunBoolean) {
+            const action = {type: "SETISRUN", isRunBoolean};
+            dispatch(action);
+        }
+    }
+};
+
+function mapStateToProps(state) {
+    return {
+        isRun: state.isRun,
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(StartNewRun));

@@ -1,6 +1,7 @@
 import React from "react";
 import {Form, Icon, Input, Button} from 'antd';
 import {postUserRegistration} from "../../../services/ApiCallService";
+import {connect} from 'react-redux';
 
 class RegisterForm extends React.Component {
 
@@ -11,19 +12,21 @@ class RegisterForm extends React.Component {
             if (!err) {
                 if (values.password === values.confirmPassword) {
                     postUserRegistration(values.username, values.password).then(response => {
-                        if (response.status === 200){
-                            console.log("success");
-                        }
-                        console.log("failure");
-
+                        response.json().then(resp => {
+                                if (resp === true) {
+                                    this.props.setIsRegisterSuccessful(true);
+                                    this.props.setIsUserNameAlreadyInUse(false);
+                                    this.props.setIsPasswordSame(true);
+                                    setTimeout(() => this.props.closeModal(), 3000)
+                                } else {
+                                    this.props.setIsUserNameAlreadyInUse(true);
+                                }
+                            }
+                        );
                     })
+                }else{
+                    this.props.setIsPasswordSame(false);
                 }
-                console.log('Received values of form: ', values);
-                console.log("yeeee:   " + values.username);
-                console.log("yeeee:   " + values.password);
-                console.log("yeeee:   " + values.confirmPassword);
-            } else {
-                console.log("this log:" + values)
             }
         });
     };
@@ -84,4 +87,27 @@ const formStyle = {
 
 const WrappedNormalLoginForm = Form.create({name: 'normal_login'})(RegisterForm);
 
-export default WrappedNormalLoginForm;
+function mapStateToProps(state) {
+    return {
+        isUserNameAlreadyInUse: state.isUserNameAlreadyInUse,
+        isRegisterSuccessful: state.isRegisterSuccessful,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setIsUserNameAlreadyInUse: function (registerBooleanType) {
+            const action = {type: "SETUSERNAMEINUSE", registerBooleanType};
+            dispatch(action);
+        },
+        setIsRegisterSuccessful: function (registerSuccessBoolean) {
+            const action = {type: "SETREGISTERSUCCESSFUL", registerSuccessBoolean};
+            dispatch(action);
+        },
+        setIsPasswordSame: function (passSameBoolean) {
+            const action = {type: "SETISPASSSAME", passSameBoolean};
+            dispatch(action);
+        },
+    }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(WrappedNormalLoginForm);

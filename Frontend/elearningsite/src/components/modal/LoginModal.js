@@ -8,6 +8,12 @@ class LoginModal extends React.Component {
         visible: false
     };
 
+    clearText = () => {
+        if (this.props.wrongLogInCredentials) {
+            this.props.setIsWrongCredentials(false);
+        }
+    };
+
     closeModal = () => {
         this.setState({
             visible: false,
@@ -21,19 +27,17 @@ class LoginModal extends React.Component {
     };
 
     handleOk = e => {
-        console.log(e);
         this.setState({
             visible: false,
         });
-        this.props.setIsWrongCredentials(false);
+        this.clearText();
     };
 
     handleCancel = e => {
-        console.log(e);
         this.setState({
             visible: false,
         });
-        this.props.setIsWrongCredentials(false);
+        this.clearText();
     };
 
     render() {
@@ -79,4 +83,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
+export default connect(mapStateToProps, mapDispatchToProps())(LoginModal);

@@ -12,9 +12,6 @@ class LoginForm extends React.Component {
                     if (response.status === 200) {
                         this.props.setIsLoggedIn(true);
                         response.json().then(resp =>this.props.setUsername(resp.username));
-                        console.log(this.props.username);
-                        console.log(this.props.isLoggedIn);
-                        // this.props.closeModal();
                         this.props.setIsWrongCredentials(false);
                     } else {
                         this.props.setIsWrongCredentials(true);
@@ -66,12 +63,6 @@ const formStyle = {
 
 const WrappedNormalLoginForm = Form.create({name: 'normal_login'})(LoginForm);
 
-function mapStateToProps(state) {
-    return {
-        isLoggedIn: state.isLoggedIn,
-        username: state.username,
-    }
-}
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -90,4 +81,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WrappedNormalLoginForm);
+export default connect(null, mapDispatchToProps)(WrappedNormalLoginForm);

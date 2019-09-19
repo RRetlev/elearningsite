@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -15,7 +14,9 @@ const initialState = {
     question: '',
     answers: [],
     second: null,
-    localClassname: ['btn', 'btn-primary', 'col', 'buttonmargin']
+    localClassname: ['btn', 'btn-primary', 'col', 'buttonmargin'],
+    isLoggedIn: false,
+    username: '',
 };
 
 function reducer(state = initialState, action) {
@@ -36,8 +37,19 @@ function reducer(state = initialState, action) {
                 ...state,
                 localClassname: action.cssData
             };
+        case 'CHANGEISLOGGEDIN':
+            return {
+                ...state,
+                isLoggedIn: action.booleanType
+            };
+        case 'SETUSERNAME':
+            return {
+                ...state,
+                username: action.username
+            };
         default:
             return state;
+
     }
 }
 

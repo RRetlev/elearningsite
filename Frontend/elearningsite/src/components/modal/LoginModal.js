@@ -3,7 +3,15 @@ import {Modal, Button} from 'antd';
 import LoginForm from "./form/LoginForm";
 
 class LoginModal extends React.Component {
-    state = {visible: false};
+    state = {
+        visible: false
+    };
+
+    closeModal = () => {
+        this.setState({
+            visible: false,
+        })
+    };
 
     showModal = () => {
         this.setState({
@@ -28,7 +36,7 @@ class LoginModal extends React.Component {
     render() {
         return (
             <div>
-                <Button  className="authBTN" type="primary" onClick={this.showModal}>
+                <Button className="authBTN" type="primary" onClick={this.showModal}>
                     Log in
                 </Button>
                 <Modal
@@ -37,7 +45,8 @@ class LoginModal extends React.Component {
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
                 >
-                    <LoginForm/>
+                    <LoginForm
+                        closeModal={this.closeModal}/>
                 </Modal>
             </div>
         );

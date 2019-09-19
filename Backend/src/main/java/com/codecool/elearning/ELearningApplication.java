@@ -47,6 +47,13 @@ public class ELearningApplication {
                     .roles(Arrays.asList("USER"))
                     .build();
 
+            QuestionGameUser user2 = QuestionGameUser.builder()
+                    .userName("qwe")
+                    .psw(passwordEncoder.encode("asd"))
+                    .score(0)
+                    .roles(Arrays.asList("USER"))
+                    .build();
+
             Question question = Question.builder()
                     .question("Whats my favourite Color")
                     .topic(Topic.Religion)
@@ -102,7 +109,7 @@ public class ELearningApplication {
 
 
 
-            userRepository.save(user1);
+            userRepository.saveAll(Arrays.asList(user1,user2));
 
             question.setAnswers(Arrays.asList(answer1,answer2,answer3,answer4));
             question2.setAnswers(Arrays.asList(answer5,answer6,answer7,answer8));

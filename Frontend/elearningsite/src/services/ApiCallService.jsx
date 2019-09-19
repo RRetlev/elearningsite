@@ -9,7 +9,7 @@ export function fetchUser() {
 }
 
 export function postUserRegistration(username, password) {
-    return fetch('http://localhost:8080/auth/signin', {
+    return fetch('http://localhost:8080/auth/register', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

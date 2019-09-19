@@ -1,6 +1,5 @@
 package com.codecool.elearning.repository;
 
-import com.codecool.elearning.model.gameEntity.Question;
 import com.codecool.elearning.model.userEntity.QuestionGameUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

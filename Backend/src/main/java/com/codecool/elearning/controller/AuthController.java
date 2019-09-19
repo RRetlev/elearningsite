@@ -1,9 +1,7 @@
 package com.codecool.elearning.controller;
 
 import com.codecool.elearning.daoImplementation.UserDBService;
-import com.codecool.elearning.model.userEntity.QuestionGameUser;
 import com.codecool.elearning.model.userEntity.UserCredentials;
-import com.codecool.elearning.repository.UserRepository;
 import com.codecool.elearning.security.JwtTokenServices;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,10 +14,8 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

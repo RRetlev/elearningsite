@@ -1,6 +1,5 @@
 package com.codecool.elearning.security;
 
-import com.codecool.elearning.model.gameEntity.Question;
 import com.codecool.elearning.model.userEntity.QuestionGameUser;
 import com.codecool.elearning.repository.UserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -4,21 +4,14 @@ package com.codecool.elearning.controller;
 import com.codecool.elearning.daoImplementation.InMemoryQuestions;
 import com.codecool.elearning.daoImplementation.QuestionDBService;
 import com.codecool.elearning.daoImplementation.UserDBService;
-import com.codecool.elearning.model.gameEntity.Answer;
 import com.codecool.elearning.model.gameEntity.Question;
 import com.codecool.elearning.model.gameEntity.RunCredentials;
-import com.codecool.elearning.model.gameEntity.Topic;
 import com.codecool.elearning.model.userEntity.QuestionGameUser;
 import com.codecool.elearning.repository.AnswerRepository;
-import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.swing.plaf.basic.BasicDesktopIconUI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -74,7 +67,6 @@ public class QuestionController {
     @ResponseBody
     public void getRunWithTopic(@RequestBody RunCredentials runCredentials) {
         questionDBService.getQuestionsByTopic(runCredentials.getTopicName(),runCredentials.getCount());
-        System.out.println("alma");
     }
 
     @GetMapping("/run/game")

@@ -1,6 +1,5 @@
 package com.codecool.elearning.daoImplementation;
 
-import com.codecool.elearning.model.gameEntity.Answer;
 import com.codecool.elearning.model.gameEntity.Question;
 import com.codecool.elearning.model.gameEntity.Topic;
 import com.codecool.elearning.repository.QuestionRepository;

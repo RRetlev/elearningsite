@@ -169,3 +169,20 @@ input:focus:-ms-input-placeholder {
     align-self: center;
     width: 50%;
 }
+
+
+.Question{
+    background-color:#ae947b;
+    padding: 1px;
+    margin: 5px;
+    color: #1f271b;
+    font-size: 55px;
+    text-align: center;
+    border: 2px solid #ae947b;
+    border-radius: 8px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.Answer{
+    
+}

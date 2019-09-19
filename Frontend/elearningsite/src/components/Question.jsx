@@ -4,9 +4,8 @@ import React, {Component} from 'react';
 class Question extends Component {
 
     render() {
-        return (<div className="col">
-            <h1>{this.props.question}</h1>
-        </div>);
+        return (<div className="Question">
+            <p>{this.props.question}</p></div>);
     }
 }
 

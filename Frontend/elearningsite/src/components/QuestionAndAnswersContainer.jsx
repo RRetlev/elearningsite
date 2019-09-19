@@ -15,26 +15,12 @@ class QuestionAndAnswersContainer extends Component {
 
     };
 
-    // wait = (ms) => {
-    //     let start = Date.now(),
-    //         now = start;
-    //     while (now - start < ms) {
-    //         now = Date.now();
-    //     }
-    // };
+    
 
     render() {
         return (<div className="container">
-            <img src={require(`../images/millionaire.png`)} className="App-logo" alt="its very bjutifull"/>
-            <div><Question question={this.props.question}/> <AnswersContainer/></div>
-            {/*{this.wait(3214)}*/}
-            {/*{*/}
-            {/*    this.props.question ?*/}
-            {/*        (<div><Question question={this.props.question}/> <AnswersContainer/></div>)*/}
-            {/*        :*/}
-
-            {/*        <Redirect to='/error/500'/>*/}
-            {/*}*/}
+            <div><Question className="Question" question={this.props.question}/> <AnswersContainer/></div>
+            
         </div>);
     }
 }

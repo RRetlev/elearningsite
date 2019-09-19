@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 class Answer extends Component {
 
     handleClick = () => {
-        console.log("click");
         if (this.props.answer.rightAnswer) {
             this.props.onGoodAnswer();
             this.props.setLocalClassname([...this.props.localClassname, "green"]);
@@ -16,7 +15,6 @@ class Answer extends Component {
     };
 
     render() {
-        console.log(this.props.localClassname);
         return (<div>
             <button type="button" className={this.props.localClassname.join(' ')} onClick={this.handleClick}>
                 {this.props.answer.text}

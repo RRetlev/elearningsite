@@ -3,24 +3,29 @@ import Question from './Question';
 import AnswersContainer from './AnswersContainer';
 import {connect} from 'react-redux';
 // import {Redirect} from 'react-router-dom'
-import {fetchQuestion} from "../services/ApiCallService";
+import {fetchQuestion, fetchRunQuestion} from "../services/ApiCallService";
 
 
 class QuestionAndAnswersContainer extends Component {
 
     componentDidMount() {
         console.log("DiD Mount");
-        fetchQuestion()
-            .then(data => this.props.setQuestion(data))
-
+        if (this.props.isRun) {
+            fetchRunQuestion().then(data => this.props.setQuestion(data))
+        } else {
+            fetchQuestion()
+                .then(data => this.props.setQuestion(data))
+        }
     };
 
-    
 
     render() {
         return (<div className="container padding">
-            <div><Question className="Question" question={this.props.question}/> <AnswersContainer/></div>
-            
+            <div>
+                <Question className="Question" question={this.props.question}/>
+                <AnswersContainer/>
+            </div>
+
         </div>);
     }
 }

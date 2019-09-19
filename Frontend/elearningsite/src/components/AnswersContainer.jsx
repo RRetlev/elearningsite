@@ -66,9 +66,17 @@ class AnswersContainer extends Component {
     };
 
     render() {
-        this.setTimer(60, () => {
-            this.makeAQuestionFetch();
-        });
+        console.log(this.props.isRun);
+        console.log(this.props.username);
+
+        if (this.props.isRun) {
+            this.setTimer(60, () => {
+                this.makeAQuestionFetch();
+            });
+        }else
+        //     {
+        //     this.makeAQuestionFetch()
+        // }
         return (<div className="conatiner-fluid">
             {
                 this.props.answers.map((answer, index) =>
@@ -101,6 +109,8 @@ function mapStateToProps(state) {
         question: state.question,
         answers: state.answers,
         seconds: state.seconds,
+        isRun: state.isRun,
+        username: state.username,
     }
 }
 

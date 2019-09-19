@@ -10,7 +10,10 @@ class StartNewRun extends Component {
 
     componentDidMount() {
         if (!this.props.isRun) {
+            console.log("doooneeee");
             this.props.setIsRun(true);
+            setTimeout(()=>console.log(this.props.isRun), 3000)
+
         }
     }
 

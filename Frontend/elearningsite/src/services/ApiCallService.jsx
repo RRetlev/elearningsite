@@ -12,9 +12,10 @@ export function fetchUser() {
 export async function postUserRegistration(username, password) {
     const rawResponse = await fetch('http://localhost:8080/???', {
         method: 'POST',
+        mode: 'cors',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(
             {
@@ -25,17 +26,19 @@ export async function postUserRegistration(username, password) {
 
 }
 
-export  function postUserLogin(username, password) {
+export function postUserLogin(username, password) {
     return fetch('http://localhost:8080/auth/signin', {
         method: 'POST',
+        mode: 'cors',
         headers: {
+            'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(
             {
-                "username": username,
-                "password": password
+                username: username,
+                password: password
             }),
     }).then(response => console.log("response:  " + response));
     // const content = await rawResponse.json();

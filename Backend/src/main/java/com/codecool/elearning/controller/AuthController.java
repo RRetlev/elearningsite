@@ -1,5 +1,7 @@
 package com.codecool.elearning.controller;
 
+import com.codecool.elearning.daoImplementation.UserDBService;
+import com.codecool.elearning.model.userEntity.QuestionGameUser;
 import com.codecool.elearning.model.userEntity.UserCredentials;
 import com.codecool.elearning.repository.UserRepository;
 import com.codecool.elearning.security.JwtTokenServices;
@@ -10,11 +12,14 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,13 +29,19 @@ import java.util.stream.Collectors;
 @RequestMapping("/auth")
 public class AuthController {
 
+    private final UserDBService userDBService;
+
     private final AuthenticationManager authenticationManager;
 
     private final JwtTokenServices jwtTokenServices;
 
-    public AuthController(AuthenticationManager authenticationManager, JwtTokenServices jwtTokenServices, UserRepository users) {
+    private final PasswordEncoder passwordEncoder;
+
+    public AuthController(AuthenticationManager authenticationManager, JwtTokenServices jwtTokenServices, UserDBService userDBService) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenServices = jwtTokenServices;
+        this.userDBService = userDBService;
+        this.passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
     @PostMapping("/signin")
@@ -60,5 +71,10 @@ public class AuthController {
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username/password supplied");
         }
+    }
+
+    @PostMapping("/register")
+    public void register(@RequestBody UserCredentials userCredentials){
+        userDBService.registerNewUser(userCredentials);
     }
 }

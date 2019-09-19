@@ -8,6 +8,12 @@ class LoginModal extends React.Component {
         visible: false
     };
 
+    clearText = () => {
+        if (this.props.wrongLogInCredentials) {
+            this.props.setIsWrongCredentials(false);
+        }
+    };
+
     closeModal = () => {
         this.setState({
             visible: false,
@@ -24,14 +30,14 @@ class LoginModal extends React.Component {
         this.setState({
             visible: false,
         });
-        this.props.setIsWrongCredentials(false);
+        this.clearText();
     };
 
     handleCancel = e => {
         this.setState({
             visible: false,
         });
-        this.props.setIsWrongCredentials(false);
+        this.clearText();
     };
 
     render() {

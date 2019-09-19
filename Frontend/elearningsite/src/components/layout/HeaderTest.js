@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {PageHeader, Button} from 'antd';
+import {PageHeader} from 'antd';
 import RegisterModal from "../modal/RegisterModal";
 import LoginModal from "../modal/LoginModal";
 import {connect} from 'react-redux';

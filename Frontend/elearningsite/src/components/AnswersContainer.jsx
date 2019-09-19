@@ -9,18 +9,16 @@ class AnswersContainer extends Component {
         isAnswerGiven: false,
         isAnswerRight: false,
         setRestartOnTimer: false,
-        localClassname: ['btn', 'btn-primary', 'col', 'buttonmargin']
+        localClassname: 'Answer'
     };
     intervalId = null;
 
 
     handleGoodAnswer = () => {
-        console.log("good answer");
         this.setState({isAnswerGiven: true, isAnswerRight: true})
     };
 
     handleBadAnswer = () => {
-        console.log("bad answer");
         this.setState({isAnswerGiven: true})
     };
 
@@ -30,7 +28,6 @@ class AnswersContainer extends Component {
                 seconds--;
                 this.props.setSeconds(seconds);
                 if (this.state.setRestartOnTimer) {
-                    console.log("doneeeee");
                     clearInterval(this.intervalId);
                     this.intervalId = null;
                     this.setState({setRestartOnTimer: false}, () => {
@@ -54,7 +51,7 @@ class AnswersContainer extends Component {
                 setRestartOnTimer: true,
                 isAnswerGiven: false,
             });
-            this.props.setLocalClassname(['btn', 'btn-primary', 'col', 'buttonmargin']);
+            this.props.setLocalClassname(['Answer']);
         })
     };
 
@@ -64,7 +61,7 @@ class AnswersContainer extends Component {
             setRestartOnTimer: true,
             isAnswerGiven: false,
         });
-        this.props.setLocalClassname(['btn', 'btn-primary', 'col', 'buttonmargin']);
+        this.props.setLocalClassname(['Answer']);
     };
 
     render() {
@@ -86,9 +83,9 @@ class AnswersContainer extends Component {
             {this.state.isAnswerGiven &&
             <div>
                 {this.state.isAnswerRight ?
-                    <div><h1>Congrats your answer is correct</h1>
+                    <div><h1 className="other-text-color">Congrats your answer is correct</h1>
                         <button onClick={this.onClickHandler} className="btn btn-info">NEXT</button>
-                    </div> : <div><h1>Your answer is not correct</h1>
+                    </div> : <div><h1 className="other-text-color">Your answer is not correct</h1>
                         <button onClick={this.onClickHandler} className="btn btn-info">NEXT</button>
                     </div>
                 }

@@ -18,7 +18,7 @@ class QuestionAndAnswersContainer extends Component {
     
 
     render() {
-        return (<div className="container">
+        return (<div className="container padding">
             <div><Question className="Question" question={this.props.question}/> <AnswersContainer/></div>
             
         </div>);

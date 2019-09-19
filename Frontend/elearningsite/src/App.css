@@ -98,6 +98,9 @@ form {
     border: 1px solid #ccc;
 
 }
+.padding{
+    padding: 25px
+}
 
 
 input:focus::-webkit-input-placeholder {
@@ -184,5 +187,28 @@ input:focus:-ms-input-placeholder {
 }
 
 .Answer{
-    
+    background-color: #145c9e;
+    color: #f1e8e5;
+    border: 2px solid #145c9e;
+    margin: 4px;
+    font-size: 45px;
+    border-radius: 10px;
+    width: 99%;
+    height: 100px;
+}
+
+.footer{
+    position: fixed;
+    padding:2px;
+    bottom: 0;
+    width: 100%;
+    height: 35px;
+    background-color: #333333;
+    color: #f1e8e5;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+.footer-text{
+    float:right;
+    margin:auto;
+    padding: 5px
 }

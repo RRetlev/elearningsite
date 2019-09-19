@@ -13,7 +13,7 @@ const initialState = {
     question: '',
     answers: [],
     second: null,
-    localClassname: ['btn', 'btn-primary', 'col', 'buttonmargin'],
+    localClassname: ['Answer'],
     isLoggedIn: false,
     username: '',
     wrongLogInCredentials: false,

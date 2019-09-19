@@ -9,6 +9,7 @@ import {connect} from 'react-redux';
 import ServerNotFound from "./components/pages/ServerNotFound.jsx";
 import HomePage from "./components/pages/HomePage";
 import StartNewRun from "./components/pages/StartNewRun";
+import Footer from "./components/layout/Footer";
 
 class App extends Component {
 
@@ -18,7 +19,7 @@ class App extends Component {
                 <div className="App background-color">
                     <Header/>
                     <Switch>
-                        <Route path="/new-question" component={() => <AddQuestion style="background-color"/>}/>
+                        <Route path="/new-question" component={() => <AddQuestion />}/>
                         <Route exact path="/" component={HomePage}/>
                         <Route exact path="/learn" component={QuestionAndAnswersContainer}/>
                         <Route exact path="/run" component={StartNewRun}/>
@@ -27,6 +28,7 @@ class App extends Component {
                         <Route component={PageNotFound}/>
                     </Switch>
                 </div>
+                <Footer/>
             </Router>
         );
     }

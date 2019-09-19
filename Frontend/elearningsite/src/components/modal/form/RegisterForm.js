@@ -1,12 +1,8 @@
 import React from "react";
 import {Form, Icon, Input, Button} from 'antd';
+import {postUserRegistration} from "../../../services/ApiCallService";
 
 class RegisterForm extends React.Component {
-    state = {
-        username: "",
-        password: "",
-        confirmPassword: "",
-    };
 
 
     handleSubmit = e => {
@@ -14,7 +10,13 @@ class RegisterForm extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 if (values.password === values.confirmPassword) {
+                    postUserRegistration(values.username, values.password).then(response => {
+                        if (response.status === 200){
+                            console.log("success");
+                        }
+                        console.log("failure");
 
+                    })
                 }
                 console.log('Received values of form: ', values);
                 console.log("yeeee:   " + values.username);

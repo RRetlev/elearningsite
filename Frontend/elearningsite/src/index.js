@@ -17,6 +17,8 @@ const initialState = {
     localClassname: ['btn', 'btn-primary', 'col', 'buttonmargin'],
     isLoggedIn: false,
     username: '',
+    wrongLogInCredentials: false,
+    userNameInUse: false
 };
 
 function reducer(state = initialState, action) {
@@ -46,6 +48,16 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 username: action.username
+            };
+        case 'SETWRONGLOGINCRED':
+            return {
+                ...state,
+                wrongLogInCredentials: action.logInBooleanType
+            };
+        case 'SETUSERNAMEINUSE':
+            return {
+                ...state,
+                userNameInUse: action.registerBooleanType
             };
         default:
             return state;

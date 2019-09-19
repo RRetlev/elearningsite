@@ -14,9 +14,10 @@ class LoginForm extends React.Component {
                         response.json().then(resp =>this.props.setUsername(resp.username));
                         console.log(this.props.username);
                         console.log(this.props.isLoggedIn);
-                        this.props.closeModal();
+                        // this.props.closeModal();
+                        this.props.setIsWrongCredentials(false);
                     } else {
-                        console.log("fail")
+                        this.props.setIsWrongCredentials(true);
                     }
                 })
 
@@ -80,6 +81,10 @@ const mapDispatchToProps = (dispatch) => {
         },
         setUsername: function (username) {
             const action = {type: "SETUSERNAME", username};
+            dispatch(action);
+        },
+        setIsWrongCredentials: function (logInBooleanType) {
+            const action = {type: "SETWRONGLOGINCRED", logInBooleanType};
             dispatch(action);
         }
     }

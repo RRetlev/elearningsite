@@ -9,7 +9,7 @@ export function fetchUser() {
 }
 
 export function postUserRegistration(username, password) {
-    return fetch('http://localhost:8080/auth/signin', {
+    return fetch('http://localhost:8080/auth/register', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -36,5 +36,16 @@ export function postUserLogin(username, password) {
                 username: username,
                 password: password
             }),
+    })
+}
+
+
+export function postUserLogout() {
+    return fetch('http://localhost:8080/auth/logout', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
     })
 }

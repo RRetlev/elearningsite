@@ -1,29 +1,41 @@
-import React from "react";
-import {PageHeader} from 'antd';
+import React, {Component} from "react";
+import {PageHeader, Button} from 'antd';
 import RegisterModal from "../modal/RegisterModal";
 import LoginModal from "../modal/LoginModal";
 import {connect} from 'react-redux';
+import LogoutButton from "../modal/LogoutButton";
 
-const HeaderTest = () => {
-    return (
-        <div style={headerStyle}>
-            <PageHeader
-                onBack={() => window.history.back()}
-                title="Let's be a MILLIONAIRE,"
-                subTitle="User Name"
-                extra={[
-                    // { ::this.props.isLoggedIn ?
-                    <div style={buttonDivStyle}>
-                        <LoginModal/>
-                        <br/>
-                        <RegisterModal/>
-                    </div>
-                    // :null}
-                ]}>
-            </PageHeader>
-        </div>
-    );
-};
+class HeaderTest extends Component {
+
+    render() {
+
+        return (
+            <div style={headerStyle}>
+
+                <PageHeader
+                    onBack={() => window.history.back()}
+                    title="Let's be a MILLIONAIRE,"
+                    subTitle="User Name"
+                    extra={[
+                        <div style={buttonDivStyle}>
+                            {this.props.isLoggedIn ?
+                                <div>
+                                    <LogoutButton/>
+                                </div>:
+                                <div>
+                                    <LoginModal/>
+                                    <br/>
+                                    <RegisterModal/>
+                                </div>
+                            }
+                        </div>
+                    ]}>
+                </PageHeader>
+            </div>
+        );
+    };
+}
+
 
 const buttonDivStyle = {
     float: 'left',

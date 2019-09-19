@@ -1,5 +1,5 @@
 import React from "react";
-import {PageHeader, Tag, Button, Statistic, Descriptions, Row} from 'antd';
+import {PageHeader} from 'antd';
 import RegisterModal from "../modal/RegisterModal";
 import LoginModal from "../modal/LoginModal";
 

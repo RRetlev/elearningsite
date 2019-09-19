@@ -21,7 +21,6 @@ class LoginModal extends React.Component {
     };
 
     handleOk = e => {
-        console.log(e);
         this.setState({
             visible: false,
         });
@@ -29,7 +28,6 @@ class LoginModal extends React.Component {
     };
 
     handleCancel = e => {
-        console.log(e);
         this.setState({
             visible: false,
         });
@@ -79,4 +77,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
+export default connect(mapStateToProps, mapDispatchToProps())(LoginModal);

@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {createStore} from "redux";
 import Provider from "react-redux/es/components/Provider";
 import 'bootstrap/dist/css/bootstrap.css';
-// import 'antd/dist/antd.css';
 import 'antd/dist/antd.less';
 
 const initialState = {
@@ -18,7 +17,9 @@ const initialState = {
     isLoggedIn: false,
     username: '',
     wrongLogInCredentials: false,
-    userNameInUse: false
+    isUserNameAlreadyInUse: false,
+    isRegisterSuccessful: false,
+    isPasswordSame: true,
 };
 
 function reducer(state = initialState, action) {
@@ -57,7 +58,17 @@ function reducer(state = initialState, action) {
         case 'SETUSERNAMEINUSE':
             return {
                 ...state,
-                userNameInUse: action.registerBooleanType
+                isUserNameAlreadyInUse: action.registerBooleanType
+            };
+        case 'SETREGISTERSUCCESSFUL':
+            return {
+                ...state,
+                isRegisterSuccessful: action.registerSuccessBoolean
+            };
+        case 'SETISPASSSAME':
+            return {
+                ...state,
+                isPasswordSame: action.passSameBoolean
             };
         default:
             return state;

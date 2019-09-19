@@ -1,9 +1,19 @@
 import React from "react";
-import { Modal, Button } from 'antd';
+import {Modal, Button} from 'antd';
 import RegisterForm from "./form/RegisterForm.js";
+import {connect} from 'react-redux';
+
 
 class RegisterModal extends React.Component {
-    state = { visible: false };
+    state = {
+        visible: false
+    };
+
+    clearText=()=>{
+       this.props.setIsUserNameAlreadyInUse(false);
+       this.props.setIsRegisterSuccessful(false);
+       this.props.setIsPasswordSame(true);
+    };
 
     showModal = () => {
         this.setState({
@@ -12,17 +22,17 @@ class RegisterModal extends React.Component {
     };
 
     handleOk = e => {
-        console.log(e);
         this.setState({
             visible: false,
         });
+        this.clearText();
     };
 
     handleCancel = e => {
-        console.log(e);
         this.setState({
             visible: false,
         });
+        this.clearText();
     };
 
     render() {
@@ -37,11 +47,58 @@ class RegisterModal extends React.Component {
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
                 >
-                    <RegisterForm/>
+                    <RegisterForm closeModal ={this.handleOk}/>
+                    {
+                        this.props.isRegisterSuccessful ?
+                            <div>
+                                <p>Registration successful!</p>
+                                <p>This modal will close in 3 seconds!</p>
+                            </div>
+                            :
+                            null
+                    }
+                    {
+                        this.props.isUserNameAlreadyInUse ?
+                            <p>This username is already in use, please try another!</p>
+                            :
+                            null
+                    }
+                    {
+                        this.props.isPasswordSame ?
+                            null
+                            :
+                            <p>The passwords you entered are different. Please check again!</p>
+
+                    }
                 </Modal>
             </div>
         );
     }
 }
 
-export default RegisterModal;
+function mapStateToProps(state) {
+    return {
+        isUserNameAlreadyInUse: state.isUserNameAlreadyInUse,
+        isRegisterSuccessful: state.isRegisterSuccessful,
+        isPasswordSame: state.isPasswordSame,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setIsUserNameAlreadyInUse: function (registerBooleanType) {
+            const action = {type: "SETUSERNAMEINUSE", registerBooleanType};
+            dispatch(action);
+        },
+        setIsRegisterSuccessful: function (registerSuccessBoolean) {
+            const action = {type: "SETREGISTERSUCCESSFUL", registerSuccessBoolean};
+            dispatch(action);
+        },
+        setIsPasswordSame: function (passSameBoolean) {
+            const action = {type: "SETISPASSSAME", passSameBoolean};
+            dispatch(action);
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterModal);

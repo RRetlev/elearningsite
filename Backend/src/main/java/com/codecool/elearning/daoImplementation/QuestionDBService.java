@@ -55,7 +55,8 @@ public class QuestionDBService {
     }
 // not use many annotations
 
-    public void getQuestionsByTopic(Topic topic, int count) {
+    public void getQuestionsByTopic(String topicName, int count) {
+        Topic topic = Topic.valueOf(topicName);
         List<Question> allQuestions = questionRepository.findAllByTopic(topic);
         Collections.shuffle(allQuestions);
         if (allQuestions.size() < count) {

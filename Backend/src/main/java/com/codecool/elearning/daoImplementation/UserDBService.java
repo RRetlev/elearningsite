@@ -2,6 +2,7 @@ package com.codecool.elearning.daoImplementation;
 
 
 import com.codecool.elearning.model.userEntity.QuestionGameUser;
+import com.codecool.elearning.model.userEntity.UserCredentials;
 import com.codecool.elearning.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -35,15 +36,13 @@ public class UserDBService {
         userRepository.updateScoreById(userName, score);
     }
 
-    public void registerNewUser(QuestionGameUser user) {
-        QuestionGameUser newUser = QuestionGameUser.builder()
-                .userName(user.getUserName())
+    public void registerNewUser(UserCredentials userCredentials) {
+        userRepository.save(QuestionGameUser.builder()
+                .psw(passwordEncoder.encode(userCredentials.getPassword()))
+                .userName(userCredentials.getUsername())
                 .score(0)
-                .roles(Arrays.asList("User"))
-                .psw(passwordEncoder.encode(user.getPsw()))
-                .build();
-
-        userRepository.save(newUser);
+                .roles(Arrays.asList("USER"))
+                .build());
     }
 
 }

@@ -6,6 +6,7 @@ import com.codecool.elearning.daoImplementation.QuestionDBService;
 import com.codecool.elearning.daoImplementation.UserDBService;
 import com.codecool.elearning.model.gameEntity.Answer;
 import com.codecool.elearning.model.gameEntity.Question;
+import com.codecool.elearning.model.gameEntity.RunCredentials;
 import com.codecool.elearning.model.gameEntity.Topic;
 import com.codecool.elearning.model.userEntity.QuestionGameUser;
 import com.codecool.elearning.repository.AnswerRepository;
@@ -49,10 +50,10 @@ public class QuestionController {
 //        return userDBService.getUserById(1L);
 //    }
 
-    @PostMapping("/register")
-    public void registerUserInDatabase(@RequestBody QuestionGameUser questionGameUser){
-        userDBService.registerNewUser(questionGameUser);
-    }
+//    @PostMapping("/register")
+//    public void registerUserInDatabase(@RequestBody QuestionGameUser questionGameUser){
+//        userDBService.registerNewUser(questionGameUser);
+//    }
 
     @PostMapping("/user")
     @ResponseBody
@@ -69,9 +70,11 @@ public class QuestionController {
         return question;
     }
 
-    @GetMapping("/run/{topic}/{count}")
-    public void getRunWithTopic(@PathVariable("topic") Topic topic, @PathVariable("count") int count) {
-        questionDBService.getQuestionsByTopic(topic, count);
+    @PostMapping("/run")
+    @ResponseBody
+    public void getRunWithTopic(@RequestBody RunCredentials runCredentials) {
+        questionDBService.getQuestionsByTopic(runCredentials.getTopicName(),runCredentials.getCount());
+        System.out.println("alma");
     }
 
     @GetMapping("/run/game")

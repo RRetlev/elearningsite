@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 class StartNewRun extends Component {
     state = {
-        topic: "",
+        topicName: "",
         numOfQuesitions: 0
     }
 
     onSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const result = {
-            topic: this.state.topic,
-            numOfQuesitions: this.state.numOfQuesitions
+            topicName: this.state.topicName,
+            numOfQuesitions: this.state.numOfQuestions
         }
-        fetch(`http://localhost:8080/${this.state.topic}/${this.state.numOfQuesitions}`,
+        fetch(`http://localhost:8080/run`,
             {
                 method: 'POST',
                 mode: 'cors',
@@ -22,7 +22,7 @@ class StartNewRun extends Component {
                 body: JSON.stringify(result)
             })
         this.setState({
-            topic: "",
+            topicName: "",
             numOfQuesitions: 0
         })
 
@@ -31,9 +31,9 @@ class StartNewRun extends Component {
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
     render() {
         return (<div>
-            <form>
+            <form onSubmit={this.onSubmit}>
 
-                <select name="topic" onChange={this.onChange} required >
+                <select name="topicName" onChange={this.onChange} required >
                     <option value="" selected disabled hidden >Choose a topic</option>
                     <option value="Programming">Programming</option>
                     <option value="History">History</option>
@@ -52,7 +52,7 @@ class StartNewRun extends Component {
                     required
                     type="text"
                     name="numOfQuestions"
-                    value={this.onChange}
+                    onChange={this.onChange}
                     placeholder="How many questions do you want?">
                 </input>
 

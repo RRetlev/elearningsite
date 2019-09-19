@@ -14,8 +14,8 @@ class HeaderTest extends Component {
 
                 <PageHeader
                     onBack={() => window.history.back()}
-                    title="Let's be a MILLIONAIRE,"
-                    subTitle="User Name"
+                    title="Asker"
+                    subTitle="A place where knowledge is born"
                     extra={[
                         <div style={buttonDivStyle}>
                             {this.props.isLoggedIn ?
@@ -24,7 +24,6 @@ class HeaderTest extends Component {
                                 </div>:
                                 <div>
                                     <LoginModal/>
-                                    <br/>
                                     <RegisterModal/>
                                 </div>
                             }

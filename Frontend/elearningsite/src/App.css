@@ -145,3 +145,27 @@ input:focus:-ms-input-placeholder {
     width: 99px;
     margin: 4px;
 }
+
+.homepageButtons{
+    
+    justify-content: center ;
+    width: 80%;
+    height: 100px;
+    font-size: 25px;
+    margin: 5px;
+    padding: 32px 16px;
+    background-color:#cbb9a8;
+    color: #1f271b;
+    border: 2px solid #cbb9a8;
+    border-radius: 12px 
+}
+
+.homepageButtons:hover{
+    background-color: #ae947b;
+    border:2px solid #ae947b
+}
+
+.HomepageContainer{
+    align-self: center;
+    width: 50%;
+}

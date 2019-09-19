@@ -10,6 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 @Component
 public class UserDBService {
@@ -36,13 +38,23 @@ public class UserDBService {
         userRepository.updateScoreById(userName, score);
     }
 
-    public void registerNewUser(UserCredentials userCredentials) {
-        userRepository.save(QuestionGameUser.builder()
+    public void registerNewUser(UserCredentials userCredentials) throws Exception {
+        QuestionGameUser userToAdd = QuestionGameUser.builder()
                 .psw(passwordEncoder.encode(userCredentials.getPassword()))
                 .userName(userCredentials.getUsername())
                 .score(0)
                 .roles(Arrays.asList("USER"))
-                .build());
+                .build() ;
+
+        Optional<QuestionGameUser> userName = userRepository.getByUserName(userCredentials.getUsername());
+        if (!userName.isPresent()){
+            userRepository.save(userToAdd);
+        }
+        else{
+            throw new Exception();
+        }
+
+
     }
 
 }

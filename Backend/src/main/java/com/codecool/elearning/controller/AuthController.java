@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
@@ -62,6 +63,7 @@ public class AuthController {
 
             Cookie cookie=new Cookie("token",token);
             cookie.setHttpOnly(true);
+            cookie.setMaxAge(-1);
             response.addCookie(cookie);
 
             return ResponseEntity.ok(model);
@@ -71,7 +73,23 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public void register(@RequestBody UserCredentials userCredentials){
-        userDBService.registerNewUser(userCredentials);
+    @ResponseBody
+    public boolean register(@RequestBody UserCredentials userCredentials){
+        try {
+            userDBService.registerNewUser(userCredentials);
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
+
+    @PostMapping("/logout")
+    public void logout(HttpServletRequest request,HttpServletResponse response){
+        Cookie[] cookies =request.getCookies();
+        for (Cookie cookie: cookies){
+            cookie.setMaxAge(0);
+            response.addCookie(cookie);
+        }
     }
 }

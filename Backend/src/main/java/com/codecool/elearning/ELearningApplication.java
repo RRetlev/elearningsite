@@ -42,7 +42,7 @@ public class ELearningApplication {
 
             QuestionGameUser user1 = QuestionGameUser.builder()
                     .userName("Bela")
-                    .psw(passwordEncoder.encode("I am Béla"))
+                    .psw(passwordEncoder.encode("I am Bela"))
                     .score(0)
                     .roles(Arrays.asList("USER"))
                     .build();

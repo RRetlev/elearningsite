@@ -20,4 +20,5 @@ public interface UserRepository extends JpaRepository<QuestionGameUser, Long> {
     void updateScoreById(@Param("userName") String userName, @Param("score") int score);
 
     Optional<QuestionGameUser> getByUserName(String userName);
+
 }

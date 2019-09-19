@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { withRouter} from 'react-router-dom'
+
+
 class StartNewRun extends Component {
     state = {
         topicName: "",
@@ -25,6 +28,7 @@ class StartNewRun extends Component {
             topicName: "",
             numOfQuesitions: 0
         })
+        this.props.history.push("/run/game")
 
     }
 
@@ -66,4 +70,4 @@ class StartNewRun extends Component {
     }
 }
 
-export default StartNewRun;
+export default withRouter(StartNewRun);

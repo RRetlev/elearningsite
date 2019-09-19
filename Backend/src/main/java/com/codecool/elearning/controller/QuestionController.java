@@ -38,10 +38,10 @@ public class QuestionController {
         return questionDBService.getrandomQuestion();
     }
 
-//    @GetMapping("/user")
-//    public QuestionGameUser getUser() {
-//        return userDBService.getUserById(1L);
-//    }
+    @GetMapping("/user")
+    public QuestionGameUser getUser() {
+        return userDBService.getUserById(1L);
+    }
 
 //    @PostMapping("/register")
 //    public void registerUserInDatabase(@RequestBody QuestionGameUser questionGameUser){

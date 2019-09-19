@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { withRouter} from 'react-router-dom'
 
 export class AddQuestion extends Component {
     state = {
@@ -46,6 +47,7 @@ export class AddQuestion extends Component {
 
         })
         this.setState({question: ' ', trueAnswer: ' ', false1: ' ', false2: ' ', false3: ' ',topic: ' '})
+        this.props.history.push("/")
     };
 
     onChange = (e) => this.setState({[e.target.name]: e.target.value});
@@ -120,4 +122,4 @@ export class AddQuestion extends Component {
     }
 }
 
-export default AddQuestion
+export default withRouter(AddQuestion)

@@ -22,6 +22,7 @@ class App extends Component {
                         <Route exact path="/" component={HomePage}/>
                         <Route exact path="/learn" component={QuestionAndAnswersContainer}/>
                         <Route exact path="/run" component={StartNewRun}/>
+                        <Route exact path="/run/game" component={QuestionAndAnswersContainer}/>
                         <Route path="/error/500" component={ServerNotFound}/>
                         <Route component={PageNotFound}/>
                     </Switch>

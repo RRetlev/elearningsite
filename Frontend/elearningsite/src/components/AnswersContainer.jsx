@@ -60,6 +60,7 @@ class AnswersContainer extends Component {
         this.setState({
             setRestartOnTimer: true,
             isAnswerGiven: false,
+            isAnswerRight: false,
         });
         this.props.setLocalClassname(['Answer']);
     };

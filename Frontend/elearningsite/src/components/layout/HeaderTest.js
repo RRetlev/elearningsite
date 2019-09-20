@@ -4,6 +4,9 @@ import RegisterModal from "../modal/RegisterModal";
 import LoginModal from "../modal/LoginModal";
 import {connect} from 'react-redux';
 import LogoutButton from "../modal/LogoutButton";
+import { jsxFragment } from "@babel/types";
+import { withRouter} from 'react-router-dom';
+import NewQuestionButton from '../modal/NewQuestionButton'
 
 class HeaderTest extends Component {
 
@@ -19,6 +22,15 @@ class HeaderTest extends Component {
 
                     subTitle="A place where knowledge is born"
                     extra={[
+                        <div>
+                    {this.props.isLoggedIn ? 
+                    <div>
+                        <NewQuestionButton />
+                    </div>   :
+                    <div>
+                    </div> 
+                    }
+                    </div>,
                         <div style={buttonDivStyle}>
                             {this.props.isLoggedIn ?
                                 <div>
@@ -29,11 +41,11 @@ class HeaderTest extends Component {
                                     <RegisterModal/>
                                 </div>
                             }
-                    {
-                        this.props.isRun
-                            ?<p> {this.props.score}</p>
-                            : null
-                    }
+                    {/*{*/}
+                    {/*    this.props.isRun*/}
+                    {/*        ?<p> {this.props.score}</p>*/}
+                    {/*        : null*/}
+                    {/*}*/}
                         </div>
                     ]}>
                 </PageHeader>
@@ -63,4 +75,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, null)(HeaderTest);
+export default connect(mapStateToProps, null)(withRouter(HeaderTest));

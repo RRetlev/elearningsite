@@ -212,3 +212,12 @@ input:focus:-ms-input-placeholder {
     margin:auto;
     padding: 5px
 }
+
+.NewQuestionButton{
+    color:white ;
+    background-color: #111111;
+    border: 2px solid #111111;
+    border-radius: 4px;
+    padding: 3px;
+    margin: 2px
+}

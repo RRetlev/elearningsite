@@ -10,7 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -34,8 +33,8 @@ public class UserDBService {
      * @param userName target user
      * @param score    new score
      */
-    public void updateScoreById(String userName, int score) {
-        userRepository.updateScoreById(userName, score);
+    public void updateScoreByUserName(String userName, int score) {
+        userRepository.updateScoreByUserName(userName, score);
     }
 
     public void registerNewUser(UserCredentials userCredentials) throws Exception {

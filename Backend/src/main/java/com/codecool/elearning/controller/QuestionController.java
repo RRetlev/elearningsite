@@ -51,7 +51,7 @@ public class QuestionController {
     @PostMapping("/user")
     @ResponseBody
     public QuestionGameUser setHighScore(@RequestBody QuestionGameUser questionGameUser) {
-        userDBService.updateScoreById(questionGameUser.getUserName(), questionGameUser.getScore());
+        userDBService.updateScoreByUserName(questionGameUser.getUserName(), questionGameUser.getScore());
         return questionGameUser;
     }
 

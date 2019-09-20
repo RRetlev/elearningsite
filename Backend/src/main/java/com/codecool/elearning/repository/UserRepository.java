@@ -17,7 +17,7 @@ public interface UserRepository extends JpaRepository<QuestionGameUser, Long> {
     @Query("update QuestionGameUser u set u.score = :score where u.userName = :userName")
     @Modifying(clearAutomatically = true)
     @Transactional
-    void updateScoreById(@Param("userName") String userName, @Param("score") int score);
+    void updateScoreByUserName(@Param("userName") String userName, @Param("score") int score);
 
     Optional<QuestionGameUser> getByUserName(String userName);
 

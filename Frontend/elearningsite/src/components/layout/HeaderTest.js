@@ -15,7 +15,7 @@ class HeaderTest extends Component {
                 <PageHeader
                     onBack={() => window.history.back()}
                     title="Asker"
-                    subTitle="A place where knowledge is born"
+                    subTitle="A place where you can learn some random stuff"
                     extra={[
                         <div style={buttonDivStyle}>
                             {this.props.isLoggedIn ?

@@ -4,6 +4,9 @@ import RegisterModal from "../modal/RegisterModal";
 import LoginModal from "../modal/LoginModal";
 import {connect} from 'react-redux';
 import LogoutButton from "../modal/LogoutButton";
+import { jsxFragment } from "@babel/types";
+import { withRouter} from 'react-router-dom';
+import NewQuestionButton from '../modal/NewQuestionButton'
 
 class HeaderTest extends Component {
 
@@ -17,6 +20,15 @@ class HeaderTest extends Component {
                     title="Asker"
                     subTitle="A place where you can learn some random stuff"
                     extra={[
+                        <div>
+                    {this.props.isLoggedIn ? 
+                    <div>
+                        <NewQuestionButton />
+                    </div>   :
+                    <div>
+                    </div> 
+                    }
+                    </div>,
                         <div style={buttonDivStyle}>
                             {this.props.isLoggedIn ?
                                 <div>
@@ -54,4 +66,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, null)(HeaderTest);
+export default connect(mapStateToProps, null)(withRouter(HeaderTest));

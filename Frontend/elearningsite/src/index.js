@@ -21,6 +21,7 @@ const initialState = {
     isRegisterSuccessful: false,
     isPasswordSame: true,
     isRun: false,
+    score: 0,
 };
 
 function reducer(state = initialState, action) {
@@ -75,6 +76,11 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 isRun: action.isRunBoolean
+            };
+        case 'INCREASESCORE':
+            return {
+                ...state,
+                score: state.score +action.point
             };
         default:
             return state;

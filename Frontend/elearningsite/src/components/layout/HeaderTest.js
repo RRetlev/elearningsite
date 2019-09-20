@@ -15,18 +15,25 @@ class HeaderTest extends Component {
                 <PageHeader
                     onBack={() => window.history.back()}
                     title="Asker"
+
+
                     subTitle="A place where knowledge is born"
                     extra={[
                         <div style={buttonDivStyle}>
                             {this.props.isLoggedIn ?
                                 <div>
                                     <LogoutButton/>
-                                </div>:
+                                </div> :
                                 <div>
                                     <LoginModal/>
                                     <RegisterModal/>
                                 </div>
                             }
+                    {
+                        this.props.isRun
+                            ?<p> {this.props.score}</p>
+                            : null
+                    }
                         </div>
                     ]}>
                 </PageHeader>
@@ -51,6 +58,8 @@ function mapStateToProps(state) {
     return {
         username: state.username,
         isLoggedIn: state.isLoggedIn,
+        isRun: state.isRun,
+        score: state.score,
     }
 }
 

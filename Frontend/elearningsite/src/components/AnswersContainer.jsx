@@ -15,7 +15,10 @@ class AnswersContainer extends Component {
 
 
     handleGoodAnswer = () => {
-        this.setState({isAnswerGiven: true, isAnswerRight: true})
+        this.setState({isAnswerGiven: true, isAnswerRight: true});
+        if (this.props.isRun) {
+            this.props.increaseScoreBy(1);
+        }
     };
 
     handleBadAnswer = () => {
@@ -66,41 +69,38 @@ class AnswersContainer extends Component {
     };
 
     render() {
-        console.log(this.props.isRun);
-        console.log(this.props.username);
-
         if (this.props.isRun) {
             this.setTimer(60, () => {
                 this.makeAQuestionFetch();
             });
-        }else
+        } else
         //     {
         //     this.makeAQuestionFetch()
         // }
-        return (<div className="conatiner-fluid">
-            {
-                this.props.answers.map((answer, index) =>
-                    <Answer
-                        answer={answer}
-                        onGoodAnswer={this.handleGoodAnswer}
-                        onBadAnswer={this.handleBadAnswer}
-                        localClassname={this.state.localClassname}
-                        key={index}
-                    />)}
-            {this.props.seconds}
+            return (<div className="conatiner-fluid">
+                {
+                    this.props.answers.map((answer, index) =>
+                        <Answer
+                            answer={answer}
+                            onGoodAnswer={this.handleGoodAnswer}
+                            onBadAnswer={this.handleBadAnswer}
+                            localClassname={this.state.localClassname}
+                            key={index}
+                        />)}
+                {this.props.seconds}
 
-            {this.state.isAnswerGiven &&
-            <div>
-                {this.state.isAnswerRight ?
-                    <div><h1 className="other-text-color">Congrats your answer is correct</h1>
-                        <button onClick={this.onClickHandler} className="btn btn-info">NEXT</button>
-                    </div> : <div><h1 className="other-text-color">Your answer is not correct</h1>
-                        <button onClick={this.onClickHandler} className="btn btn-info">NEXT</button>
-                    </div>
+                {this.state.isAnswerGiven &&
+                <div>
+                    {this.state.isAnswerRight ?
+                        <div><h1 className="other-text-color">Congrats your answer is correct</h1>
+                            <button onClick={this.onClickHandler} className="btn btn-info">NEXT</button>
+                        </div> : <div><h1 className="other-text-color">Your answer is not correct</h1>
+                            <button onClick={this.onClickHandler} className="btn btn-info">NEXT</button>
+                        </div>
+                    }
+                </div>
                 }
-            </div>
-            }
-        </div>);
+            </div>);
     }
 }
 
@@ -111,6 +111,7 @@ function mapStateToProps(state) {
         seconds: state.seconds,
         isRun: state.isRun,
         username: state.username,
+        score: state.score,
     }
 }
 
@@ -130,6 +131,10 @@ const mapDispatchToProps = (dispatch) => {
         },
         setLocalClassname: function (cssData) {
             const action = {type: "SETCSS", cssData};
+            dispatch(action);
+        },
+        increaseScoreBy: function (point) {
+            const action = {type: "INCREASESCORE", point};
             dispatch(action);
         },
     }

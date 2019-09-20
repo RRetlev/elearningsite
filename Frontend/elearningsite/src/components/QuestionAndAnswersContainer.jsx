@@ -47,7 +47,8 @@ const mapDispatchToProps = (dispatch) => {
         setIsRun: function (isRunBoolean) {
             const action = {type: "SETISRUN", isRunBoolean};
             dispatch(action);
-        }
+        },
+
     }
 };
 

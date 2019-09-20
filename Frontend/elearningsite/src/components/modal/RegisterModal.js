@@ -9,10 +9,18 @@ class RegisterModal extends React.Component {
         visible: false
     };
 
-    clearText=()=>{
-       this.props.setIsUserNameAlreadyInUse(false);
-       this.props.setIsRegisterSuccessful(false);
-       this.props.setIsPasswordSame(true);
+    clearText = () => {
+        if (this.props.isUserNameAlreadyInUse) {
+            this.props.setIsUserNameAlreadyInUse(false);
+        }
+        if (this.props.isRegisterSuccessful) {
+
+            this.props.setIsRegisterSuccessful(false);
+        }
+        if (this.props.isPasswordSame) {
+
+            this.props.setIsPasswordSame(true);
+        }
     };
 
     showModal = () => {
@@ -47,7 +55,7 @@ class RegisterModal extends React.Component {
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
                 >
-                    <RegisterForm closeModal ={this.handleOk}/>
+                    <RegisterForm closeModal={this.handleOk}/>
                     {
                         this.props.isRegisterSuccessful ?
                             <div>

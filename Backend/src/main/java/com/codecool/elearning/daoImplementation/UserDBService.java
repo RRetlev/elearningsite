@@ -44,14 +44,13 @@ public class UserDBService {
                 .userName(userCredentials.getUsername())
                 .score(0)
                 .roles(Arrays.asList("USER"))
-                .build() ;
+                .build();
 
         Optional<QuestionGameUser> userName = userRepository.getByUserName(userCredentials.getUsername());
-        if (!userName.isPresent()){
+        if (!userName.isPresent()) {
             userRepository.save(userToAdd);
-        }
-        else{
-            throw new Exception();
+        } else {
+            throw new RuntimeException();
         }
 
 

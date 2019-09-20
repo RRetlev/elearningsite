@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Answer from './Answer'
-import {connect} from 'react-redux';
-import {fetchQuestion} from "../services/ApiCallService";
+import { connect } from 'react-redux';
+import { fetchQuestion, fetchRunQuestion } from "../services/ApiCallService";
 
 
 class AnswersContainer extends Component {
@@ -15,11 +15,11 @@ class AnswersContainer extends Component {
 
 
     handleGoodAnswer = () => {
-        this.setState({isAnswerGiven: true, isAnswerRight: true})
+        this.setState({ isAnswerGiven: true, isAnswerRight: true })
     };
 
     handleBadAnswer = () => {
-        this.setState({isAnswerGiven: true})
+        this.setState({ isAnswerGiven: true })
     };
 
     setTimer = (seconds, callback) => {
@@ -30,7 +30,7 @@ class AnswersContainer extends Component {
                 if (this.state.setRestartOnTimer) {
                     clearInterval(this.intervalId);
                     this.intervalId = null;
-                    this.setState({setRestartOnTimer: false}, () => {
+                    this.setState({ setRestartOnTimer: false }, () => {
                         this.setTimer(seconds, callback);
                     });
                     return;
@@ -45,15 +45,41 @@ class AnswersContainer extends Component {
     };
 
     makeAQuestionFetch = () => {
-        fetchQuestion().then((data) => {
+        if (this.props.isRun) {
+            fetchQuestion()
+                .then((data) => {
+                    this.props.setQuestion(data);
+                    this.setState({
+                        setRestartOnTimer: true,
+                        isAnswerGiven: false,
+                    });
+                    this.props.setLocalClassname(['Answer']);
+                })
+        }
+        else {
+            fetchRunQuestion()
+                .then((data) => {
+                    this.props.setQuestion(data);
+                    this.setState({
+                        setRestartOnTimer: true,
+                        isAnswerGiven: false,
+                    });
+                    this.props.setLocalClassname(['Answer']);
+                })
+
+        }
+    };
+
+    makeARunQuestionFetch = () => {
+        fetchRunQuestion().then((data) => {
             this.props.setQuestion(data);
             this.setState({
                 setRestartOnTimer: true,
-                isAnswerGiven: false,
+                isAnswerGiven: false
             });
-            this.props.setLocalClassname(['Answer']);
+            this.props.setLocalClassname(['Answer'])
         })
-    };
+    }
 
     onClickHandler = () => {
         this.makeAQuestionFetch();
@@ -73,34 +99,34 @@ class AnswersContainer extends Component {
             this.setTimer(60, () => {
                 this.makeAQuestionFetch();
             });
-        }else
-        //     {
-        //     this.makeAQuestionFetch()
-        // }
-        return (<div className="conatiner-fluid">
-            {
-                this.props.answers.map((answer, index) =>
-                    <Answer
-                        answer={answer}
-                        onGoodAnswer={this.handleGoodAnswer}
-                        onBadAnswer={this.handleBadAnswer}
-                        localClassname={this.state.localClassname}
-                        key={index}
-                    />)}
-            {this.props.seconds}
+        } else
+            // {
+            // this.makeAQuestionFetch()
+            // }
+            return (<div className="conatiner-fluid">
+                {
+                    this.props.answers.map((answer, index) =>
+                        <Answer
+                            answer={answer}
+                            onGoodAnswer={this.handleGoodAnswer}
+                            onBadAnswer={this.handleBadAnswer}
+                            localClassname={this.state.localClassname}
+                            key={index}
+                        />)}
+                {this.props.seconds}
 
-            {this.state.isAnswerGiven &&
-            <div>
-                {this.state.isAnswerRight ?
-                    <div><h1 className="other-text-color">Congrats your answer is correct</h1>
-                        <button onClick={this.onClickHandler} className="btn btn-info">NEXT</button>
-                    </div> : <div><h1 className="other-text-color">Your answer is not correct</h1>
-                        <button onClick={this.onClickHandler} className="btn btn-info">NEXT</button>
+                {this.state.isAnswerGiven &&
+                    <div>
+                        {this.state.isAnswerRight ?
+                            <div><h1 className="other-text-color">Congrats your answer is correct</h1>
+                                <button onClick={this.onClickHandler} className="btn btn-info">NEXT</button>
+                            </div> : <div><h1 className="other-text-color">Your answer is not correct</h1>
+                                <button onClick={this.onClickHandler} className="btn btn-info">NEXT</button>
+                            </div>
+                        }
                     </div>
                 }
-            </div>
-            }
-        </div>);
+            </div>);
     }
 }
 
@@ -117,19 +143,19 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch) => {
     return {
         setQuestion: function (questionData) {
-            const action = {type: "FETCHQ", questionData};
+            const action = { type: "FETCHQ", questionData };
             dispatch(action);
         },
         setSeconds: function (seconds) {
-            const action = {type: "SETSEC", seconds};
+            const action = { type: "SETSEC", seconds };
             dispatch(action);
         },
         setRestartOnTimer: function (booleanValue) {
-            const action = {type: "RESTARTTIMER", booleanValue};
+            const action = { type: "RESTARTTIMER", booleanValue };
             dispatch(action);
         },
         setLocalClassname: function (cssData) {
-            const action = {type: "SETCSS", cssData};
+            const action = { type: "SETCSS", cssData };
             dispatch(action);
         },
     }
